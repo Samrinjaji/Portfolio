@@ -65,13 +65,6 @@
     display: none;
   }
 }
-/* 
-
-
- */
-
-/*
-
 
 /* Light Mode Theme *
 html[data-theme="light"] {
@@ -159,4 +152,42 @@ html[data-theme="light"] footer {
 /* Override the inner footer divider (uses utility border-white/5) *
 html[data-theme="light"] footer .mt-10 {
   border-top: 1px solid rgba(0,0,0,0.1) !important;
+}
+
+/* Mobile-specific tweaks for the contact section */
+@media (max-width: 640px) {
+  /* Make the email wrap and reduce its size and bottom spacing */
+  #contact a[href^="mailto"] {
+    display: inline-block;
+    white-space: normal !important;
+    word-break: break-word;
+    font-size: 1.25rem; /* slightly smaller on mobile */
+    margin-bottom: 1.25rem !important; /* reduce large mb-24 on mobile */
+    line-height: 1.05;
+  }
+
+  /* Reduce contact icons sizing and labels so they fit on small screens */
+  #contact .flex > a {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+  #contact .flex > a img {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+  #contact .flex > a span {
+    bottom: -1.25rem !important;
+    font-size: 8px !important;
+  }
+
+  /* Slightly tighten heading & paragraph spacing on small screens */
+  #contact h2 {
+    font-size: 2rem !important;
+    line-height: 1.05 !important;
+    margin-bottom: 0.75rem;
+  }
+  #contact p {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }
