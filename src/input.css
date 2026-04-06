@@ -23,7 +23,6 @@
     --color-crimson: #ad262d;
     --color-ember: #e8633e;
     --nav-bg: rgba(17,16,16,0.9);
-
 }
 
 .nav-links a::after {
@@ -37,6 +36,7 @@
   transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   border-radius: 2px;
 }
+
 .nav-links a:hover { color: var(--color-parchment); }
 .nav-links a:hover::after,
 .nav-links a.active::after { width: 100%; }
@@ -65,7 +65,10 @@
     display: none;
   }
 }
+/* 
 
+
+ */
 
 /*
 
