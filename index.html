@@ -551,6 +551,17 @@
 
           </footer>
 
+          <div id="lightbox" class="fixed inset-0 z-100 bg-void-base/95 backdrop-blur-md hidden flex-col items-center justify-center p-4 md:p-20 transition-all duration-300 opacity-0">
+                <button class="absolute top-8 right-8 text-ash hover:text-ember transition-colors group">
+                    <span class="font-mono text-[10px] uppercase tracking-[0.3em]">Close // esc</span>
+                </button>
+                
+                <div class="relative max-w-5xl w-full h-full flex items-center justify-center pointer-events-none">
+                    <img id="lightbox-img" src="" class="max-w-full max-h-full object-contain border border-white/5 shadow-2xl shadow-ember/5" alt="Expanded View">
+                    <div class="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"></div>
+                </div>
+            </div>
+
     </main>
 
 
