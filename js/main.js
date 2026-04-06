@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // A. HOME ENTRANCE (Main Timeline)
         const mainTl = gsap.timeline({ 
-            defaults: { ease: "power4.out", duration: 1.2 } 
+            defaults: { ease: "power4.out", duration: 1.1 } 
         });
 
         mainTl
