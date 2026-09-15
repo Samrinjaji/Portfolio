@@ -6,6 +6,9 @@ import {
   FileCode2,
 } from "lucide-react"
 
+import { GitHubContributionGraph } from "github-contrib-graph/react"
+import "github-contrib-graph/styles.css"
+
 function Hero() {
   return (
     <section className="min-h-screen bg-ink px-6 py-6 text-ink-deep md:px-10 lg:px-16">
@@ -54,7 +57,7 @@ function Hero() {
         {/* Content */}
         <div className="min-w-0">
           
-          <p className="mb-4 mt-4 flex justify-center text-xs font-bold uppercase tracking-[0.2em] text-accent-blue sm:text-sm"> Full Stack Developer 
+          <p className="mb-4 mt-4 flex justify-center text-xs font-bold uppercase tracking-[0.2em] text-accent-blue sm:text-sm md:justify-start"> Full Stack Developer 
           </p>
  
           <h1 className="w-full text-3xl font-extrabold uppercase leading-[0.95] tracking-tighter sm:text-5xl md:text-4xl lg:text-4xl"> Turning ideas into reliable web applications. 
@@ -79,10 +82,10 @@ function Hero() {
       </div>
 
       {/* Bento grid */}
-      <div className="mx-auto mt-10 grid w-full max-w-4xl grid-cols-1 gap-3 lg:grid-cols-4">
+      <div className="mx-auto mt-5 grid w-full max-w-4xl grid-cols-1 gap-3 lg:grid-cols-4">
 
         {/* Featured Project */}
-        <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/[0.04] p-4 lg:col-span-3">
+        <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-4 lg:col-span-3">
 
           {/* Bento heading */}
           <div className="mb-3 flex items-center justify-between">
@@ -139,19 +142,19 @@ function Hero() {
 
                 <div className="flex flex-wrap gap-1.5">
 
-                  <span className="rounded-md bg-ink-deep/[0.06] px-2 py-1 text-[10px] font-bold uppercase">
+                  <span className="rounded-md bg-ink-deep/6 px-2 py-1 text-[10px] font-bold uppercase">
                     HTML
                   </span>
 
-                  <span className="rounded-md bg-ink-deep/[0.06] px-2 py-1 text-[10px] font-bold uppercase">
+                  <span className="rounded-md bg-ink-deep/6 px-2 py-1 text-[10px] font-bold uppercase">
                     CSS3
                   </span>
 
-                  <span className="rounded-md bg-ink-deep/[0.06] px-2 py-1 text-[10px] font-bold uppercase">
+                  <span className="rounded-md bg-ink-deep/6 px-2 py-1 text-[10px] font-bold uppercase">
                     JavaScript
                   </span>
 
-                  <span className="rounded-md bg-ink-deep/[0.06] px-2 py-1 text-[10px] font-bold uppercase">
+                  <span className="rounded-md bg-ink-deep/6 px-2 py-1 text-[10px] font-bold uppercase">
                     PHP
                   </span>
 
@@ -168,7 +171,7 @@ function Hero() {
                 </a> 
 
                 {/* GitHub */}
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="View project on GitHub" className="flex h-8 w-8 items-center justify-center rounded-md border border-ink-deep/10 text-ink-deep/50 transition-all hover:border-accent-blue hover:bg-accent-blue hover:text-white" > <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" > <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.01c-3.2.7-3.88-1.54-3.88-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.67.41.36.78 1.08.78 2.18v3.23c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" /> </svg>
+                <a href="https://github.com/Samrinjaji/owwa-scholarship-system" target="_blank" rel="noopener noreferrer" aria-label="View project on GitHub" className="flex h-8 w-8 items-center justify-center rounded-md border border-ink-deep/10 text-ink-deep/50 transition-all hover:border-accent-blue hover:bg-accent-blue hover:text-white" > <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" > <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.01c-3.2.7-3.88-1.54-3.88-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.67.41.36.78 1.08.78 2.18v3.23c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z" /> </svg>
                 </a>
               </div>
 
@@ -196,116 +199,190 @@ function Hero() {
 
         </a>
 
-
         {/* Stack */}
-        <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/[0.04] p-5 lg:col-span-2"> 
+        <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/6 p-4 lg:col-span-1">
 
-        <div className="flex items-center justify-between"> 
+          {/* Header */}
+          <div className="flex items-center justify-between">
 
-          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink-deep/40"> Stack </span> 
-          <span className="text-xs text-ink-deep/30"> 03 </span> 
+            <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-ink-deep/40"> Stack </span>
+            <span className="text-[10px] text-ink-deep/30"> 03 </span>
 
-        </div>
-        
-        {/* Tech icons */} 
-        <div className="mt-5 grid grid-cols-6 gap-3"> 
-          
-          {/* React */} 
-          <div className="group flex flex-col items-center gap-1.5"> 
+          </div>
 
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ink-deep/[0.06] text-accent-blue transition-all group-hover:-translate-y-1 group-hover:bg-accent-blue group-hover:text-white"> <Atom className="h-5 w-5" /> 
-            </div> 
+          {/* Tech icons */}
+          <div className="mt-4 grid grid-cols-2 gap-2">
 
-            <span className="font-mono text-[9px] font-bold uppercase text-ink-deep/40"> React </span> 
+            {/* React */} 
+            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/6 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
 
-          </div> 
+              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-deep/6 text-accent-blue transition-colors group-hover:bg-white/10 group-hover:text-white"> 
+                <Atom className="h-3.5 w-3.5" /> 
+              </div> 
+              <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+               React 
+              </span>
+
+            </div>
+
+            {/* TypeScript */}
+            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
             
-            {/* TypeScript */} 
-            <div className="group flex flex-col items-center gap-1.5"> 
+              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-deep/6 text-accent-blue transition-colors group-hover:bg-white/10 group-hover:text-white"> <Code2 className="h-3.5 w-3.5" /> 
+              </div>
 
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ink-deep/[0.06] text-accent-blue transition-all group-hover:-translate-y-1 group-hover:bg-accent-blue group-hover:text-white"> 
-              <Code2 className="h-5 w-5" /> 
-              </div> 
+              <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white"> TypeScript </span>
+            
+            </div>
 
-              <span className="font-mono text-[9px] font-bold uppercase text-ink-deep/40"> TypeScript </span> 
-
-            </div> 
-          
             {/* Tailwind */}
-            <div className="group flex flex-col items-center gap-1.5"> 
+            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
 
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ink-deep/[0.06] text-accent-blue transition-all group-hover:-translate-y-1 group-hover:bg-accent-blue group-hover:text-white"> <Wind className="h-5 w-5" /> 
-              </div> 
+              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-deep/6 text-accent-blue transition-colors group-hover:bg-white/10 group-hover:text-white"> <Wind className="h-3.5 w-3.5" />
+              </div>
 
-              <span className="font-mono text-[9px] font-bold uppercase text-ink-deep/40"> Tailwind </span> 
+              <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white"> Tailwind </span>
 
             </div>
 
             {/* JavaScript */}
-            <div className="group flex flex-col items-center gap-1.5">
+            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
 
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ink-deep/[0.06] text-accent-blue transition-all group-hover:-translate-y-1 group-hover:bg-accent-blue group-hover:text-white"> <FileCode2 className="h-5 w-5" /> 
-              </div> <span className="font-mono text-[9px] font-bold uppercase text-ink-deep/40"> JavaScript </span> 
-
+              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-deep/6 text-accent-blue transition-colors group-hover:bg-white/10 group-hover:text-white"> <FileCode2 className="h-3.5 w-3.5" />
               </div>
 
-              {/* Node.js */} 
-              <div className="group flex flex-col items-center gap-1.5"> 
+              <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white"> JavaScript </span>
 
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ink-deep/[0.06] text-accent-blue transition-all group-hover:-translate-y-1 group-hover:bg-accent-blue group-hover:text-white"> <Server className="h-5 w-5" /> 
-                </div> 
+            </div>
 
-                <span className="font-mono text-[9px] font-bold uppercase text-ink-deep/40"> Node.js </span> 
+            {/* Node.js */}
+            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
 
-                </div> 
-
-                {/* PHP */} 
-                <div className="group flex flex-col items-center gap-1.5"> 
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ink-deep/[0.06] text-accent-blue transition-all group-hover:-translate-y-1 group-hover:bg-accent-blue group-hover:text-white"> <Code2 className="h-5 w-5" /> 
-                  </div> 
-                  
-                  <span className="font-mono text-[9px] font-bold uppercase text-ink-deep/40"> PHP </span> 
-
-                </div> 
-                </div> 
+              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-deep/6 text-accent-blue transition-colors group-hover:bg-white/10 group-hover:text-white"> <Server className="h-3.5 w-3.5" />
               </div>
 
+              <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white"> Node.js </span>
+
+            </div>
+
+            {/* PHP */}
+            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
+            
+              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-deep/6 text-accent-blue transition-colors group-hover:bg-white/10 group-hover:text-white"> <Code2 className="h-3.5 w-3.5" /> 
+              </div>
+
+              <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white"> PHP </span>
+
+            </div>
+
+          </div>
+        
+        </div>
 
         {/* GitHub Contribution */}
-        <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/[0.04] p-5 lg:col-span-2">
+        <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 lg:col-span-3">
 
-          <div className="flex items-center justify-between">
-
+          {/* Bento heading */}
+          <div className="mb-5 flex items-center justify-between">
             <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink-deep/40">
-              GitHub Contribution
+              GitHub Contributions
             </span>
 
-            <span className="font-mono text-[10px] text-ink-deep/30">
-              Activity
+            <span className="text-xs text-ink-deep/30">
+              04
+            </span>
+          </div>
+
+          {/* Contribution graph */}
+          <div className="w-full overflow-x-auto scrollbar-none [&::-webkit-scrollbar]:hidden">
+            <div className="min-w-170">
+              <GitHubContributionGraph
+                username="Samrinjaji"
+
+                theme={{
+                  bgColor: "transparent",
+
+                  textColor: "#171717",
+                  inactiveTextColor: "rgba(23, 23, 23, 0.35)",
+
+                  cellLevel0: "rgba(1, 75, 170, 0.07)",
+                  cellLevel1: "rgba(1, 75, 170, 0.22)",
+                  cellLevel2: "rgba(1, 75, 170, 0.42)",
+                  cellLevel3: "rgba(1, 75, 170, 0.68)",
+                  cellLevel4: "#014baa",
+
+                  borderColor: "transparent",
+                  cellBorderColor: "transparent",
+
+                  cardPadding: 0,
+                  cardPaddingBlock: 0,
+                  canvasPaddingTop: 0,
+                  canvasMarginInline: 0,
+
+                  cellSize: 10,
+                  cellGap: 3,
+                  cellRadius: 2,
+
+                  fontFamily: "JetBrains Mono, monospace",
+                }}
+
+                showHeader={false}
+                showFooter={false}
+                showThumbnail={false}
+                showMonthLabels={true}
+                showWeekdayLabels={false}
+                showTooltips={true}
+              />
+            </div>
+          </div>
+
+          {/* Legend */}
+          <div className="mt-4 flex items-center justify-end gap-1.5">
+
+            <span className="font-mono text-[9px] font-medium uppercase tracking-widest text-ink-deep/30">
+              Less
+            </span>
+
+            {[
+              "rgba(1, 75, 170, 0.07)",
+              "rgba(1, 75, 170, 0.22)",
+              "rgba(1, 75, 170, 0.42)",
+              "rgba(1, 75, 170, 0.68)",
+              "#014baa",
+            ].map((color) => (
+              <span
+                key={color}
+                className="h-2.5 w-2.5 rounded-xs"
+                style={{ backgroundColor: color }}
+              />
+            ))}
+
+            <span className="font-mono text-[9px] font-medium uppercase tracking-widest text-ink-deep/30">
+              More
             </span>
 
           </div>
 
-          <div className="mt-6 flex gap-1.5 overflow-hidden">
+          {/* Footer */}
+          <div className="mt-4 flex items-center justify-between border-t border-ink-deep/10 pt-3">
 
-            {Array.from({ length: 32 }).map((_, index) => (
-              <span
-                key={index}
-                className={`h-3 w-3 shrink-0 rounded-[2px] ${
-                  index % 7 === 0
-                    ? "bg-accent-blue"
-                    : index % 5 === 0
-                      ? "bg-accent-blue/60"
-                      : index % 3 === 0
-                        ? "bg-accent-blue/30"
-                        : "bg-ink-deep/10"
-                }`}
-              />
-            ))}
+            <span className="font-mono text-[9px] font-bold uppercase tracking-[0.15em] text-ink-deep/30">
+              github.com/Samrinjaji
+            </span>
+
+            <a
+              href="https://github.com/Samrinjaji"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-bold text-accent-blue transition-transform hover:translate-x-1"
+            >
+              View profile ↗
+            </a>
 
           </div>
 
         </div>
+        
 
       </div>
 
