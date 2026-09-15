@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 import {
   Atom,
   Code2,
@@ -10,8 +12,27 @@ import { GitHubContributionGraph } from "github-contrib-graph/react"
 import "github-contrib-graph/styles.css"
 
 function Hero() {
+
+  const [darkMode, setDarkMode] = useState(false)
+
+  const toggleTheme = () => {
+    setDarkMode(!darkMode)
+    document.documentElement.classList.toggle("dark")
+  }
+  
   return (
-    <section className="min-h-screen bg-ink px-6 py-6 text-ink-deep md:px-10 lg:px-16">
+    
+    <section id="home" className="relative min-h-screen bg-ink px-6 py-6 text-ink-deep md:px-10 lg:px-16">
+
+      {/* Theme Toggle */}
+      <button
+        type="button"
+        onClick={toggleTheme}
+        aria-label="Toggle dark mode"
+        className="cursor-pointer absolute right-6 top-6 flex h-9 w-9 items-center justify-center rounded-full border border-ink-deep/10 bg-ink-deep/5 text-sm transition-all hover:bg-accent-blue/60 hover:text-white md:right-10 lg:right-16"
+      >
+        {darkMode ? "☀" : "☾"}
+      </button>
 
       {/* Terminal */}
       <div className="mx-auto mb-8 w-full hidden md:max-w-5xl md:block">
@@ -23,7 +44,7 @@ function Hero() {
 
           <span className="-ml-3.5 flex shrink-0 items-center bg-accent-blue/90 py-3 pl-9 pr-8 text-white" style={{ clipPath: "polygon(14px 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 14px 100%, 0 50%)", }} > Samrin ~ </span>
 
-          <span className="-ml-3.5 flex min-w-0 flex-1 items-center bg-ink-deep/6 py-3 pl-9 pr-8 text-ink-deep/70" style={{ clipPath: "polygon(14px 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 14px 100%, 0 50%)", }} > Full Stack Developer ~ </span>
+          <span className="-ml-3.5 flex min-w-0 flex-1 items-center bg-ink-deep/6 py-3 pl-9 pr-8 text-ink-deep/70" style={{ clipPath: "polygon(14px 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 14px 100%, 0 50%)", }} > Full Stack Developer / CyberSecurity ~ </span>
 
           <span className="ml-3 w-0.75 shrink-0 animate-pulse bg-accent-blue" />
 
@@ -57,7 +78,7 @@ function Hero() {
         {/* Content */}
         <div className="min-w-0">
           
-          <p className="mb-4 mt-4 flex justify-center text-xs font-bold uppercase tracking-[0.2em] text-accent-blue sm:text-sm md:justify-start"> Full Stack Developer 
+          <p className="mb-4 mt-4 flex justify-center text-xs font-bold uppercase tracking-[0.2em] text-accent-blue sm:text-sm md:justify-start"> Full Stack Developer
           </p>
  
           <h1 className="w-full text-3xl font-extrabold uppercase leading-[0.95] tracking-tighter sm:text-5xl md:text-4xl lg:text-4xl"> Turning ideas into reliable web applications. 
@@ -383,7 +404,6 @@ function Hero() {
 
         </div>
         
-
       </div>
 
     </section>
