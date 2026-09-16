@@ -34,7 +34,7 @@ export default function Navbar() {
               className={`group flex items-center gap-2 rounded-full px-3 py-2 transition-all ${
                 isActive
                   ? "bg-accent-blue/70 text-white"
-                  : "text-ink-deep/50 hover:bg-accent-blue/40 hover:text-white"
+                  : "text-ink-deep/50 hover:bg-ink-deep/10"
               }`}
             >
               <Icon className="h-4 w-4" />

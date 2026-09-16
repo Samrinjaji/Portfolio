@@ -14,21 +14,23 @@ import "github-contrib-graph/styles.css"
 
 function Hero() {
 
-  const [darkMode, setDarkMode] = useState(false)
+  {/*const [darkMode, setDarkMode] = useState(false)*/}
+  
   const [githubMonths, setGithubMonths] = useState<
     { name: string; totalWeeks: number }[]
   >([])
 
+  {/*
   const toggleTheme = () => {
     setDarkMode(!darkMode)
     document.documentElement.classList.toggle("dark")
-  }
+  }*/}
   
   return (
     
     <section id="home" className="relative min-h-screen bg-ink px-6 py-6 text-ink-deep md:px-10 lg:px-16">
 
-      {/* Theme Toggle */}
+      {/* Theme Toggle 
       <button
         type="button"
         onClick={toggleTheme}
@@ -37,6 +39,7 @@ function Hero() {
       >
         {darkMode ? "☀" : "☾"}
       </button>
+      */}
 
       {/* Terminal */}
       <div className="mx-auto mb-8 w-full hidden md:max-w-5xl md:block">
