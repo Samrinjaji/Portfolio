@@ -316,66 +316,72 @@ function Hero() {
             </span>
           </div>
 
-          {githubMonths.length > 0 && (
-            <div className="mt-1 flex w-full overflow-visible">
-              {githubMonths.map((month, index) => {
-                  const isCurrentMonth = 
-                    index === githubMonths.length - 1
-                        return (
+          <div className="-mx-6 w-[calc(100%+3rem)] overflow-x-auto overflow-y-visible px-6 scrollbar-none [&::-webkit-scrollbar]:hidden md:mx-0 md:w-full md:overflow-visible md:px-0">
+            <div className="min-w-170 md:min-w-0">
 
-                  <div key={`${month.name}-${index}`} className="min-w-0" style={{ flexGrow: month.totalWeeks, flexBasis: 0, }} >
-                        <span className={`whitespace-nowrap font-mono text-[9px] uppercase tracking-widest ${ isCurrentMonth ? "font-bold text-accent-blue" :     "font-medium text-ink-deep/30" }`} >
-                      {month.name} 
-                    </span> 
-                  </div>
-                ) })}
-            </div>
-          )}
-          
-          {/* Contribution graph */}
-          <div className="w-full overflow-visible">
-            <GitHubContributionGraph
-              username="Samrinjaji"
+              {githubMonths.length > 0 && (
+                <div className="mt-1 flex w-full overflow-visible">
+                  {githubMonths.map((month, index) => {
+                      const isCurrentMonth = 
+                        index === githubMonths.length - 1
+                            return (
+
+                      <div key={`${month.name}-${index}`} className="min-w-0" style={{ flexGrow: month.totalWeeks, flexBasis: 0, }} >
+                            <span className={`whitespace-nowrap font-mono text-[9px] uppercase tracking-widest ${ isCurrentMonth ? "font-bold text-accent-blue" :     "font-medium text-ink-deep/30" }`} >
+                          {month.name} 
+                        </span> 
+                      </div>
+                    ) })}
+                </div>
+              )}
               
-              theme={{ 
-                bgColor: "transparent", 
-                textColor: "#171717", 
-                inactiveTextColor: "rgba(23, 23, 23, 0.35)", 
-                cellLevel0: "rgba(1, 75, 170, 0.07)", 
-                cellLevel1: "rgba(1, 75, 170, 0.22)", 
-                cellLevel2: "rgba(1, 75, 170, 0.42)", 
-                cellLevel3: "rgba(1, 75, 170, 0.68)", 
-                cellLevel4: "#014baa", 
-                borderColor: "transparent", 
-                cellBorderColor: "transparent", 
-                cardPadding: 0, 
-                cardPaddingBlock: 0, 
-                canvasPaddingTop: 0, 
-                canvasMarginInline: 0, 
-                cellSize: 10, 
-                cellGap: 3, 
-                cellRadius: 2, 
-                fontFamily: "JetBrains Mono, monospace", 
-              }}
+              {/* Contribution graph */}
+              <div className="w-full overflow-visible">
+                <GitHubContributionGraph
+                  username="Samrinjaji"
+                  
+                  theme={{ 
+                    bgColor: "transparent", 
+                    textColor: "#171717", 
+                    inactiveTextColor: "rgba(23, 23, 23, 0.35)", 
+                    cellLevel0: "rgba(1, 75, 170, 0.07)", 
+                    cellLevel1: "rgba(1, 75, 170, 0.22)", 
+                    cellLevel2: "rgba(1, 75, 170, 0.42)", 
+                    cellLevel3: "rgba(1, 75, 170, 0.68)", 
+                    cellLevel4: "#014baa", 
+                    borderColor: "transparent", 
+                    cellBorderColor: "transparent", 
+                    cardPadding: 0, 
+                    cardPaddingBlock: 0, 
+                    canvasPaddingTop: 0, 
+                    canvasMarginInline: 0, 
+                    cellSize: 10, 
+                    cellGap: 3, 
+                    cellRadius: 2, 
+                    fontFamily: "JetBrains Mono, monospace", 
+                  }}
 
-              showHeader={false} 
-              showFooter={false} 
-              showThumbnail={false}
-              showMonthLabels={false}
-              showWeekdayLabels={false}
-              showTooltips={true}
-              onDataLoaded={(data) => {
-                const calendar =
-                  data.contributionsCollection.contributionCalendar
+                  showHeader={false} 
+                  showFooter={false} 
+                  showThumbnail={false}
+                  showMonthLabels={false}
+                  showWeekdayLabels={false}
+                  showTooltips={true}
+                  onDataLoaded={(data) => {
+                    const calendar =
+                      data.contributionsCollection.contributionCalendar
 
-                  setGithubMonths(
-                    calendar.months.map((month) => ({
-                      name: month.name,
-                    totalWeeks: month.totalWeeks,
-                  }))
-                )
-              }}
-            />
+                      setGithubMonths(
+                        calendar.months.map((month) => ({
+                          name: month.name,
+                        totalWeeks: month.totalWeeks,
+                      }))
+                    )
+                  }}
+                />
+              </div>
+
+            </div>
           </div>
 
           <div className="mt-4 flex items-center justify-end gap-1.5">
