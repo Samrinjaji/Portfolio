@@ -14,6 +14,9 @@ import "github-contrib-graph/styles.css"
 function Hero() {
 
   const [darkMode, setDarkMode] = useState(false)
+  const [githubMonths, setGithubMonths] = useState<
+    { name: string; totalWeeks: number }[]
+  >([])
 
   const toggleTheme = () => {
     setDarkMode(!darkMode)
@@ -305,101 +308,105 @@ function Hero() {
 
           {/* Bento heading */}
           <div className="mb-5 flex items-center justify-between">
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink-deep/40">
-              GitHub Contributions
-            </span>
-
+            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink-deep/40"> 
+             GitHub Contributions 
+            </span> 
             <span className="text-xs text-ink-deep/30">
-              04
+             04 
             </span>
           </div>
 
-          {/* Contribution graph */}
-          <div className="w-full overflow-x-auto scrollbar-none [&::-webkit-scrollbar]:hidden">
-            <div className="min-w-170">
-              <GitHubContributionGraph
-                username="Samrinjaji"
+          {githubMonths.length > 0 && (
+            <div className="mt-1 flex w-full overflow-visible">
+              {githubMonths.map((month, index) => {
+                  const isCurrentMonth = 
+                    index === githubMonths.length - 1
+                        return (
 
-                theme={{
-                  bgColor: "transparent",
-
-                  textColor: "#171717",
-                  inactiveTextColor: "rgba(23, 23, 23, 0.35)",
-
-                  cellLevel0: "rgba(1, 75, 170, 0.07)",
-                  cellLevel1: "rgba(1, 75, 170, 0.22)",
-                  cellLevel2: "rgba(1, 75, 170, 0.42)",
-                  cellLevel3: "rgba(1, 75, 170, 0.68)",
-                  cellLevel4: "#014baa",
-
-                  borderColor: "transparent",
-                  cellBorderColor: "transparent",
-
-                  cardPadding: 0,
-                  cardPaddingBlock: 0,
-                  canvasPaddingTop: 0,
-                  canvasMarginInline: 0,
-
-                  cellSize: 10,
-                  cellGap: 3,
-                  cellRadius: 2,
-
-                  fontFamily: "JetBrains Mono, monospace",
-                }}
-
-                showHeader={false}
-                showFooter={false}
-                showThumbnail={false}
-                showMonthLabels={true}
-                showWeekdayLabels={false}
-                showTooltips={true}
-              />
+                  <div key={`${month.name}-${index}`} className="min-w-0" style={{ flexGrow: month.totalWeeks, flexBasis: 0, }} >
+                        <span className={`whitespace-nowrap font-mono text-[9px] uppercase tracking-widest ${ isCurrentMonth ? "font-bold text-accent-blue" :     "font-medium text-ink-deep/30" }`} >
+                      {month.name} 
+                    </span> 
+                  </div>
+                ) })}
             </div>
+          )}
+          
+          {/* Contribution graph */}
+          <div className="w-full overflow-visible">
+            <GitHubContributionGraph
+              username="Samrinjaji"
+              
+              theme={{ 
+                bgColor: "transparent", 
+                textColor: "#171717", 
+                inactiveTextColor: "rgba(23, 23, 23, 0.35)", 
+                cellLevel0: "rgba(1, 75, 170, 0.07)", 
+                cellLevel1: "rgba(1, 75, 170, 0.22)", 
+                cellLevel2: "rgba(1, 75, 170, 0.42)", 
+                cellLevel3: "rgba(1, 75, 170, 0.68)", 
+                cellLevel4: "#014baa", 
+                borderColor: "transparent", 
+                cellBorderColor: "transparent", 
+                cardPadding: 0, 
+                cardPaddingBlock: 0, 
+                canvasPaddingTop: 0, 
+                canvasMarginInline: 0, 
+                cellSize: 10, 
+                cellGap: 3, 
+                cellRadius: 2, 
+                fontFamily: "JetBrains Mono, monospace", 
+              }}
+
+              showHeader={false} 
+              showFooter={false} 
+              showThumbnail={false}
+              showMonthLabels={false}
+              showWeekdayLabels={false}
+              showTooltips={true}
+              onDataLoaded={(data) => {
+                const calendar =
+                  data.contributionsCollection.contributionCalendar
+
+                  setGithubMonths(
+                    calendar.months.map((month) => ({
+                      name: month.name,
+                    totalWeeks: month.totalWeeks,
+                  }))
+                )
+              }}
+            />
           </div>
 
-          {/* Legend */}
           <div className="mt-4 flex items-center justify-end gap-1.5">
-
-            <span className="font-mono text-[9px] font-medium uppercase tracking-widest text-ink-deep/30">
-              Less
+            <span className="font-mono text-[9px] font-medium uppercase tracking-widest text-ink-deep/30"> 
+              Less 
             </span>
-
-            {[
-              "rgba(1, 75, 170, 0.07)",
-              "rgba(1, 75, 170, 0.22)",
-              "rgba(1, 75, 170, 0.42)",
-              "rgba(1, 75, 170, 0.68)",
-              "#014baa",
+            
+            {[ "rgba(1, 75, 170, 0.07)", 
+              "rgba(1, 75, 170, 0.22)", 
+              "rgba(1, 75, 170, 0.42)", 
+              "rgba(1, 75, 170, 0.68)", 
+              "#014baa", 
             ].map((color) => (
-              <span
-                key={color}
-                className="h-2.5 w-2.5 rounded-xs"
-                style={{ backgroundColor: color }}
-              />
+              <span key={color} 
+              className="h-2.5 w-2.5 rounded-xs" 
+              style={{ backgroundColor: color }} 
+              /> 
             ))}
-
-            <span className="font-mono text-[9px] font-medium uppercase tracking-widest text-ink-deep/30">
-              More
+            
+            <span className="font-mono text-[9px] font-medium uppercase tracking-widest text-ink-deep/30"> 
+              More 
             </span>
-
           </div>
 
-          {/* Footer */}
           <div className="mt-4 flex items-center justify-between border-t border-ink-deep/10 pt-3">
-
-            <span className="font-mono text-[9px] font-bold uppercase tracking-[0.15em] text-ink-deep/30">
-              github.com/Samrinjaji
+            <span className="font-mono text-[9px] font-bold uppercase tracking-[0.15em] text-ink-deep/30"> 
+              github.com/Samrinjaji 
             </span>
-
-            <a
-              href="https://github.com/Samrinjaji"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-bold text-accent-blue transition-transform hover:translate-x-1"
-            >
-              View profile ↗
+            <a href="https://github.com/Samrinjaji" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-accent-blue transition-transform hover:translate-x-1" > 
+              View profile ↗ 
             </a>
-
           </div>
 
         </div>
