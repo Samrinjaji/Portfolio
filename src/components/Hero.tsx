@@ -1,12 +1,13 @@
 import { useState } from "react"
 
 import {
-  Atom,
-  Code2,
-  Wind,
-  Server,
-  FileCode2,
-} from "lucide-react"
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiJavascript,
+  SiPhp,
+} from "react-icons/si";
 
 import { GitHubContributionGraph } from "github-contrib-graph/react"
 import "github-contrib-graph/styles.css"
@@ -224,84 +225,90 @@ function Hero() {
         </a>
 
         {/* Stack */}
-        <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/6 p-4 lg:col-span-1">
+<div className="rounded-xl border border-ink-deep/10 bg-ink-deep/6 p-4 lg:col-span-1">
 
-          {/* Header */}
-          <div className="flex items-center justify-between">
+  {/* Header */}
+  <div className="flex items-center justify-between">
+    <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-ink-deep/40">
+      Stack
+    </span>
 
-            <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-ink-deep/40"> Stack </span>
-            <span className="text-[10px] text-ink-deep/30"> 03 </span>
+    <span className="text-[10px] text-ink-deep/30">
+      03
+    </span>
+  </div>
 
-          </div>
+  {/* Tech icons */}
+  <div className="mt-4 grid grid-cols-2 gap-2">
 
-          {/* Tech icons */}
-          <div className="mt-4 grid grid-cols-2 gap-2">
+    {/* React */}
+    <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
+      <div className="flex h-10 w-10 items-center justify-center rounded-md  transition-colors group-hover:bg-white/10">
+        <SiReact className="h-8 w-8 text-[#61DAFB] group-hover:text-white" />
+      </div>
 
-            {/* React */} 
-            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/6 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
+      <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+        React
+      </span>
+    </div>
 
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-deep/6 text-accent-blue transition-colors group-hover:bg-white/10 group-hover:text-white"> 
-                <Atom className="h-3.5 w-3.5" /> 
-              </div> 
-              <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
-               React 
-              </span>
+    {/* TypeScript */}
+    <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
+      <div className="flex h-10 w-10 items-center justify-center rounded-md  transition-colors group-hover:bg-white/10">
+        <SiTypescript className="h-8 w-8 text-[#3178C6] group-hover:text-white" />
+      </div>
 
-            </div>
+      <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+        TypeScript
+      </span>
+    </div>
 
-            {/* TypeScript */}
-            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
-            
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-deep/6 text-accent-blue transition-colors group-hover:bg-white/10 group-hover:text-white"> <Code2 className="h-3.5 w-3.5" /> 
-              </div>
+    {/* Tailwind */}
+    <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
+      <div className="flex h-10 w-10 items-center justify-center rounded-md  transition-colors group-hover:bg-white/10">
+        <SiTailwindcss className="h-8 w-8 text-[#06B6D4] group-hover:text-white" />
+      </div>
 
-              <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white"> TypeScript </span>
-            
-            </div>
+      <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+        Tailwind
+      </span>
+    </div>
 
-            {/* Tailwind */}
-            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
+    {/* JavaScript */}
+    <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
+      <div className="flex h-10 w-10 items-center justify-center rounded-md  transition-colors group-hover:bg-white/10">
+        <SiJavascript className="h-8 w-8 text-[#F7DF1E] group-hover:text-white" />
+      </div>
 
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-deep/6 text-accent-blue transition-colors group-hover:bg-white/10 group-hover:text-white"> <Wind className="h-3.5 w-3.5" />
-              </div>
+      <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+        JavaScript
+      </span>
+    </div>
 
-              <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white"> Tailwind </span>
+    {/* Node.js */}
+    <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
+      <div className="flex h-10 w-10 items-center justify-center rounded-md  transition-colors group-hover:bg-white/10">
+        <SiNodedotjs className="h-8 w-8 text-[#5FA04E] group-hover:text-white" />
+      </div>
 
-            </div>
+      <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+        Node.js
+      </span>
+    </div>
 
-            {/* JavaScript */}
-            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
+    {/* PHP */}
+    <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
+      <div className="flex h-10 w-10 items-center justify-center rounded-md  transition-colors group-hover:bg-white/10">
+        <SiPhp className="h-8 w-8 text-[#777BB4] group-hover:text-white" />
+      </div>
 
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-deep/6 text-accent-blue transition-colors group-hover:bg-white/10 group-hover:text-white"> <FileCode2 className="h-3.5 w-3.5" />
-              </div>
+      <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+        PHP
+      </span>
+    </div>
 
-              <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white"> JavaScript </span>
-
-            </div>
-
-            {/* Node.js */}
-            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
-
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-deep/6 text-accent-blue transition-colors group-hover:bg-white/10 group-hover:text-white"> <Server className="h-3.5 w-3.5" />
-              </div>
-
-              <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white"> Node.js </span>
-
-            </div>
-
-            {/* PHP */}
-            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
-            
-              <div className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-deep/6 text-accent-blue transition-colors group-hover:bg-white/10 group-hover:text-white"> <Code2 className="h-3.5 w-3.5" /> 
-              </div>
-
-              <span className="mt-1.5 font-mono text-[8px] font-bold uppercase text-ink-deep/50 group-hover:text-white"> PHP </span>
-
-            </div>
-
-          </div>
-        
-        </div>
+  </div>
+</div>
 
         {/* GitHub Contribution */}
         <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 lg:col-span-3">

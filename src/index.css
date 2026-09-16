@@ -31,3 +31,34 @@ body {
 .github-contribution-wrapper .github-contribution-months {
   letter-spacing: 0.08em;
 }
+
+@keyframes profile-greeting {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  40% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+
+.animate-profile-greeting {
+  animation: profile-greeting 6s ease-in-out infinite;
+}
