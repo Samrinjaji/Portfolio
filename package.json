@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.3.3",
     "github-contrib-graph": "^3.1.1",
     "lucide-react": "^1.46.0",
