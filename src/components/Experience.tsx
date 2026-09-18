@@ -11,7 +11,7 @@ function Experience() {
       role: "Junior Front end Developer",
       company: "Upstaff Virtual Pro",
       period: "Mar 2024 — July 2024",
-      location: "Onsite",
+      location: "Philippines",
       present: true,
       description:
         "Designing and building full stack applications end to end — from role-based access systems to client-facing tools — with a growing focus on writing code that holds up under security review.",
