@@ -9,12 +9,17 @@ import {
   FaChevronRight,
 } from "react-icons/fa"
 
+import officeImage from "../assets/office.jpg"
+import catImage from "../assets/cat.jpg"
+import samrinImage from "../assets/samrinjaji.jpeg"
+import samrinDark from "../assets/samrin-dark.png"
+
 function About() {
   const galleryImages = [
-    { src: "/src/assets/office.jpg", alt: "Coding setup" },
-    { src: "/src/assets/cat.jpg", alt: "Development project" },
-    { src: "/src/assets/samrinjaji.jpeg", alt: "Workspace" },
-  ]
+  { src: officeImage, alt: "Coding setup" },
+  { src: catImage, alt: "Development project" },
+  { src: samrinImage, alt: "Workspace" },
+]
 
   const [activeSlide, setActiveSlide] = useState(0)
 
@@ -78,9 +83,9 @@ function About() {
 
                 <div className="relative shrink-0">
                     <img
-                        src="/src/assets/samrin-dark.png"
-                        alt="Samrin Jaji"
-                        className="h-14 w-14 rounded-full border-2 border-accent-blue object-cover"
+                      src={samrinDark}
+                      alt="Samrin Jaji"
+                      className="h-14 w-14 rounded-full border-2 border-accent-blue object-cover"
                     />
 
                     <div className="pointer-events-none absolute right-0 top-full z-10 mt-2 whitespace-nowrap rounded-md border border-ink-deep/10 bg-ink-deep px-3 py-1.5 text-xs font-medium text-ink shadow-sm animate-profile-greeting">
