@@ -55,7 +55,7 @@ function About() {
       <div className="mx-auto mt-8 w-full max-w-4xl">
 
         {/* Intro */}
-        <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 sm:p-7">
+        <div className="animate-[heroFadeUp_0.7s_ease-out_0.15s_both] rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 sm:p-7">
 
           <div className="grid gap-8 md:grid-cols-[1.3fr_0.7fr]">
 

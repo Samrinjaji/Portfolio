@@ -43,7 +43,7 @@ function Hero() {
       */}
 
       {/* Terminal */}
-      <div className="mx-auto mb-8 w-full hidden md:max-w-5xl md:block">
+      <div className="mx-auto mb-8 hidden w-full animate-[heroFadeDown_0.7s_ease-out_both] md:block md:max-w-5xl">
         <div className="flex w-full items-stretch overflow-hidden font-mono text-xs font-bold sm:text-sm">
 
           <span className="flex shrink-0 items-center bg-ink-deep py-3 pl-5 pr-8 text-ink" style={{ clipPath: "polygon(0 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 0 100%)", }} > 0 </span>
@@ -63,7 +63,7 @@ function Hero() {
       <div className="mx-auto grid w-full max-w-4xl grid-cols-1 items-center  md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)]">
  
         {/* Profile */}
-        <div className="flex flex-col items-center gap-3 md:items-start">
+        <div className="flex animate-[heroScale_0.7s_ease-out_0.15s_both] flex-col items-center gap-3 md:items-start">
           <div className="relative aspect-square w-30 overflow-hidden rounded-xl border-2 border-accent-blue lg:w-38">
             <img src="/src/assets/samrin-dark.png" alt="Samrin Jaji" className="h-full w-full object-cover" />
           </div>
@@ -82,11 +82,15 @@ function Hero() {
         </div>
  
         {/* Content */}
-        <div className="min-w-0">
+        <div className="min-w-0 animate-[heroFadeUp_0.7s_ease-out_0.25s_both]">
           <p className="mb-4 mt-4 flex justify-center text-xs font-bold uppercase tracking-[0.2em] text-accent-blue sm:text-sm md:justify-start"> Full Stack Developer
           </p>
  
-          <h1 className="w-full text-2xl font-extrabold uppercase leading-[0.95] tracking-tighter  lg:text-3xl">Developer. Creater. Problem Solver. 
+          <h1
+            className="glitch-text relative w-full text-2xl font-extrabold uppercase leading-[0.95] tracking-tighter lg:text-3xl"
+            data-text="Developer. Creator. Problem Solver."
+          >
+            Developer. Creator. Problem Solver.
           </h1>
  
           <p className="mt-5 max-w-xl text-sm leading-6 text-ink-deep/60 sm:text-base"> I build exceptional digital experiences that live at the intersection of design and technology.
@@ -108,7 +112,7 @@ function Hero() {
       <div className="mx-auto mt-5 grid w-full max-w-4xl grid-cols-1 gap-3 lg:grid-cols-4">
 
         {/* Featured Project */}
-        <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-4 lg:col-span-3">
+        <div className="animate-[heroFadeUp_0.7s_ease-out_0.55s_both] rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-4 lg:col-span-3">
 
           {/* Bento heading */}
           <div className="mb-3 flex items-center justify-between">
@@ -198,7 +202,10 @@ function Hero() {
         </div>
 
         {/* Projects */}
-        <a href="#projects" className="group flex min-h-64 flex-col justify-between rounded-xl bg-accent-blue p-5 text-white transition-transform duration-300 hover:-translate-y-1 lg:col-span-1" > 
+        <a
+          href="#projects"
+          className="group flex min-h-64 animate-[heroFadeUp_0.7s_ease-out_0.7s_both] flex-col justify-between rounded-xl bg-accent-blue p-5 text-white transition-transform duration-300 hover:-translate-y-1 lg:col-span-1"
+        >
           <div className="flex items-center justify-between"> 
             <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/60"> Projects </span> 
           </div> 
@@ -214,90 +221,83 @@ function Hero() {
         </a>
 
         {/* Stack */}
-        <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/6 p-4 lg:col-span-1">
+      <div className="animate-[heroFadeUp_0.7s_ease-out_0.85s_both] rounded-xl border border-ink-deep/10 bg-ink-deep/6 p-2 lg:col-span-1">
 
-          {/* Header */}
-          <div className="flex items-center justify-between">
-            <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-ink-deep/40">
-              Stack
-            </span>
-          </div>
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-ink-deep/40">
+            Stack
+          </span>
+        </div>
 
-          {/* Tech icons */}
-          <div className="mt-4 grid grid-cols-2 gap-2">
+        {/* Tech Stack */}
+        <div className="relative mt-4 flex min-h-[190px] items-center justify-center">
 
-            {/* React */}
-            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
-              <div className="flex h-10 w-10 items-center justify-center rounded-md  transition-colors group-hover:bg-white/10">
-                <SiReact className="h-8 w-8 text-[#61DAFB] group-hover:text-white" />
-              </div>
-
-              <span className="mt-1.5 font-mono text-[8px] md:text-[10px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+          {/* React */}
+          <div className="absolute left-2 top-3 z-10 w-[82px] rotate-[-6deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-30 hover:rotate-0 hover:-translate-y-1">
+            <div className="flex items-center gap-2">
+              <SiReact className="h-5 w-5 shrink-0 text-blue-500" />
+              <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
                 React
               </span>
             </div>
+          </div>
 
-            {/* TypeScript */}
-            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
-              <div className="flex h-10 w-10 items-center justify-center rounded-md  transition-colors group-hover:bg-white/10">
-                <SiTypescript className="h-8 w-8 text-[#3178C6] group-hover:text-white" />
-              </div>
-
-              <span className="mt-1.5 font-mono text-[8px] md:text-[10px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+          {/* TypeScript */}
+          <div className="absolute right-2 top-1 z-20 w-[90px] rotate-[5deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-30 hover:rotate-0 hover:-translate-y-1">
+            <div className="flex items-center gap-2">
+              <SiTypescript className="h-5 w-5 shrink-0 text-[#3178C6]" />
+              <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
                 TypeScript
               </span>
             </div>
+          </div>
 
-            {/* Tailwind */}
-            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
-              <div className="flex h-10 w-10 items-center justify-center rounded-md  transition-colors group-hover:bg-white/10">
-                <SiTailwindcss className="h-8 w-8 text-[#06B6D4] group-hover:text-white" />
-              </div>
-
-              <span className="mt-1.5 font-mono text-[8px] md:text-[10px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+          {/* Tailwind */}
+          <div className="absolute left-6 top-16 z-30 w-[88px] rotate-[3deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
+            <div className="flex items-center gap-2">
+              <SiTailwindcss className="h-5 w-5 shrink-0 text-[#06B6D4]" />
+              <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
                 Tailwind
               </span>
             </div>
+          </div>
 
-            {/* JavaScript */}
-            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
-              <div className="flex h-10 w-10 items-center justify-center rounded-md  transition-colors group-hover:bg-white/10">
-                <SiJavascript className="h-8 w-8 text-[#F7DF1E] group-hover:text-white" />
-              </div>
-
-              <span className="mt-1.5 font-mono text-[8px] md:text-[10px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+          {/* JavaScript */}
+          <div className="absolute right-5 top-14 z-20 w-[92px] rotate-[-4deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
+            <div className="flex items-center gap-2">
+              <SiJavascript className="h-5 w-5 shrink-0 text-[#F7DF1E]" />
+              <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
                 JavaScript
               </span>
             </div>
+          </div>
 
-            {/* Node.js */}
-            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
-              <div className="flex h-10 w-10 items-center justify-center rounded-md  transition-colors group-hover:bg-white/10">
-                <SiNodedotjs className="h-8 w-8 text-[#5FA04E] group-hover:text-white" />
-              </div>
-
-              <span className="mt-1.5 font-mono text-[8px] md:text-[10px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+          {/* Node.js */}
+          <div className="absolute bottom-4 left-4 z-10 w-[82px] rotate-[-4deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
+            <div className="flex items-center gap-2">
+              <SiNodedotjs className="h-5 w-5 shrink-0 text-[#5FA04E]" />
+              <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
                 Node.js
               </span>
             </div>
+          </div>
 
-            {/* PHP */}
-            <div className="group flex flex-col items-center justify-center rounded-md bg-ink-deep/4 py-2 transition-all hover:-translate-y-0.5 hover:bg-accent-blue">
-              <div className="flex h-10 w-10 items-center justify-center rounded-md  transition-colors group-hover:bg-white/10">
-                <SiPhp className="h-8 w-8 text-[#777BB4] group-hover:text-white" />
-              </div>
-
-              <span className="mt-1.5 font-mono text-[8px] md:text-[10px] font-bold uppercase text-ink-deep/50 group-hover:text-white">
+          {/* PHP */}
+          <div className="absolute bottom-2 right-4 z-20 w-[76px] rotate-[7deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
+            <div className="flex items-center gap-2">
+              <SiPhp className="h-5 w-5 shrink-0 text-[#777BB4]" />
+              <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
                 PHP
               </span>
             </div>
-
           </div>
 
+        </div>
       </div>
 
         {/* GitHub Contribution */}
-        <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 lg:col-span-3">
+        <div className="animate-[heroFadeUp_0.7s_ease-out_1s_both] rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 lg:col-span-3">
 
           {/* Bento heading */}
           <div className="mb-5 flex items-center justify-between">
