@@ -1,13 +1,39 @@
+import { useState, useEffect } from "react"
 import {
   FaMapMarkerAlt,
   FaGraduationCap,
   FaShieldAlt,
   FaCode,
   FaImages,
-  FaBasketballBall,
-} from "react-icons/fa";
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa"
 
 function About() {
+  const galleryImages = [
+    { src: "/src/assets/office.jpg", alt: "Coding setup" },
+    { src: "/src/assets/cat.jpg", alt: "Development project" },
+    { src: "/src/assets/samrinjaji.jpeg", alt: "Workspace" },
+  ]
+
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  // Auto-advance every 3.5s, cleans up on unmount
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % galleryImages.length)
+    }, 3500)
+    return () => clearInterval(timer)
+  }, [galleryImages.length])
+
+  const goPrev = () =>
+    setActiveSlide(
+      (prev) => (prev - 1 + galleryImages.length) % galleryImages.length
+    )
+
+  const goNext = () =>
+    setActiveSlide((prev) => (prev + 1) % galleryImages.length)
+
   return (
     <section id="about" className="bg-ink px-6 py-16 text-ink-deep md:px-10 lg:px-16">
 
@@ -43,10 +69,10 @@ function About() {
                     Beyond the code
                     </p>
 
-                    <h2 className="mt-2 text-2xl font-extrabold text-ink-deep sm:text-3xl">
-                    Building with curiosity.
+                    <h2 className="mt-2 font-extrabold text-ink-deep sm:text-2xl">
+                    Transforming Ideas Into
                     <br />
-                    Learning with purpose.
+                    Digital Excellence
                     </h2>
                 </div>
 
@@ -138,10 +164,14 @@ function About() {
         </div>
 
         {/* Interests / Approach */}
-        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
 
           {/* Development */}
-          <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30">
+          <div className="group relative isolate overflow-hidden rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30">
+
+            {/* Decorative background: gradient wash + blurred circle */}
+            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-accent-blue/8 via-transparent to-transparent" />
+            <div className="pointer-events-none absolute -right-10 -top-10 -z-10 h-36 w-36 rounded-full bg-accent-blue/20 blur-xl transition-opacity duration-300 group-hover:opacity-90" />
 
             <div className="flex items-center justify-between">
               <FaCode className="h-5 w-5" />
@@ -167,7 +197,12 @@ function About() {
           </div>
 
           {/* Gallery */}
-            <div className="relative overflow-hidden rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30">
+            <div className="group relative isolate overflow-hidden rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30">
+
+            {/* Decorative background: gradient wash + blurred circle */}
+            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-bl from-accent-blue/8] via-transparent to-transparent" />
+            <div className="pointer-events-none absolute -left-10 -top-10 -z-10 h-32 w-32 rounded-full bg-accent-blue/20 blur-xl transition-opacity duration-300 group-hover:opacity-90" />
+
             <div className="flex items-center justify-between">
                 <FaImages className="h-5 w-5 " />
 
@@ -184,80 +219,74 @@ function About() {
                 A glimpse behind the screen
             </h3>
 
-            {/* Photo stack */}
-            <div className="relative mt-4 h-10 overflow-visible">
-                {/* Photo 1 */}
-                <div className="absolute left-0 top-0 z-10 w-[45%] -rotate-6 overflow-hidden rounded-lg border border-ink-deep/10 bg-ink shadow-md transition-all duration-300 hover:z-30 hover:-translate-y-3 hover:rotate-0 hover:scale-105 hover:shadow-xl">
+            {/* Carousel */}
+            <div className="group/carousel relative mt-4 h-40 overflow-hidden rounded-lg border border-ink-deep/10 bg-ink">
+
+              {galleryImages.map((image, i) => (
                 <img
-                    src="/src/assets/office.jpg"
-                    alt="Coding setup"
-                    className="h-40 w-full object-cover"
+                  key={image.src}
+                  src={image.src}
+                  alt={image.alt}
+                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+                    i === activeSlide ? "opacity-100" : "opacity-0"
+                  }`}
                 />
-                </div>
+              ))}
 
-                {/* Photo 2 */}
-                <div className="absolute left-1/2 top-0 z-20 w-[45%] -translate-x-1/2 rotate-2 overflow-hidden rounded-lg border border-ink-deep/10 bg-ink shadow-md transition-all duration-300 hover:z-30 hover:-translate-y-3 hover:rotate-0 hover:scale-105 hover:shadow-xl">
-                <img
-                    src="/src/assets/cat.jpg"
-                    alt="Development project"
-                    className="h-40 w-full object-cover"
-                />
-                </div>
+              {/* Prev / next arrows — visible on hover only */}
+              <button
+                type="button"
+                onClick={goPrev}
+                aria-label="Previous photo"
+                className="absolute left-2 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-ink-deep/50 text-ink opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover/carousel:opacity-100"
+              >
+                <FaChevronLeft className="h-3 w-3" />
+              </button>
 
-                {/* Photo 3 */}
-                <div className="absolute right-0 top-0 z-10 w-[45%] rotate-6 overflow-hidden rounded-lg border border-ink-deep/10 bg-ink shadow-md transition-all duration-300 hover:z-30 hover:-translate-y-3 hover:rotate-0 hover:scale-105 hover:shadow-xl">
-                <img
-                    src="/src/assets/samrinjaji.jpeg"
-                    alt="Workspace"
-                    className="h-40 w-full object-cover"
-                />
-                </div>
+              <button
+                type="button"
+                onClick={goNext}
+                aria-label="Next photo"
+                className="absolute right-2 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-ink-deep/50 text-ink opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover/carousel:opacity-100"
+              >
+                <FaChevronRight className="h-3 w-3" />
+              </button>
+
+              {/* Dots */}
+              <div className="absolute bottom-2 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
+                {galleryImages.map((image, i) => (
+                  <button
+                    key={image.src}
+                    type="button"
+                    onClick={() => setActiveSlide(i)}
+                    aria-label={`Go to photo ${i + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      i === activeSlide ? "w-4 bg-white" : "w-1.5 bg-white/50"
+                    }`}
+                  />
+                ))}
+              </div>
+
             </div>
-            </div>
-
-            {/* Outside */}
-            <div className="rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30">
-
-                <div className="flex items-center justify-between">
-                <FaBasketballBall className="h-5 w-5" />
-
-                <span className="font-mono text-[9px] text-ink-deep/25">
-                    03
-                </span>
-                </div>
-
-                <p className="mt-6 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-ink-deep/30">
-                Outside Code
-                </p>
-
-                <h3 className="mt-2 text-base font-bold">
-                Stay active
-                </h3>
-
-                <p className="mt-2 text-xs leading-5 text-ink-deep/50">
-                Running and Chess give me a reason to step away from the
-                screen and reset.
-                </p>
-
             </div>
 
             </div>
 
-        {/* Bottom metadata */}
-        <div className="mt-3 flex flex-col gap-3 rounded-xl border border-ink-deep/10 bg-ink-deep/4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+          {/* Bottom metadata */}
+          <div className="mt-3 flex flex-col gap-3 rounded-xl border border-ink-deep/10 bg-ink-deep/4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
 
-          <span className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-ink-deep/30">
-            Always learning / always building
-          </span>
+            <span className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-ink-deep/30">
+              Always learning / always building
+            </span>
 
-          <span className="flex items-center gap-2 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-accent-blue">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent-blue" />
-            Open to opportunities
-          </span>
+            <span className="flex items-center gap-2 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-accent-blue">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent-blue" />
+              Open to opportunities
+            </span>
+
+          </div>
 
         </div>
-
-      </div>
 
     </section>
   )

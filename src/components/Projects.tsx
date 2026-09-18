@@ -14,8 +14,8 @@ function Projects() {
         "Built as my capstone. OWWA's internal process for granting staff access was manual and inconsistent, so I designed a role-based system to make access control predictable and auditable.",
       stack: ["HTML", "CSS3", "JavaScript", "PHP"],
       image: "/src/assets/owwa.png",
-      href: "#",
-      github: "#",
+      href: "https://example.com/",
+      github: "https://github.com/Samrinjaji/owwa-scholarship-system",
     },
     {
       index: "02",
@@ -27,8 +27,8 @@ function Projects() {
         "Built it during to test my skills in front end development",
       stack: ["HTML", "CSS", "Javascript"],
       image: "/src/assets/portfolio.png",
-      href: "#",
-      github: "#",
+      href: "https://samrinjaji.github.io/my-portfolio/",
+      github: "https://github.com/Samrinjaji/my-portfolio",
     },
     {
       index: "03",
@@ -40,8 +40,8 @@ function Projects() {
         "Built it during my academic year project",
       stack: ["Arduino","C++"],
       image: "/src/assets/gas-smoke.jpeg",
-      href: "#",
-      github: "#",
+      href: "https://example.com/",
+      github: "https://github.com/Samrinjaji/arduino-gas-and-smoke-detection-with-gprs",
     },
   ]
 
@@ -70,7 +70,7 @@ function Projects() {
           What I've built
         </p>
 
-        <h2 className="mt-2 max-w-xl text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <h2 className="mt-2 max-w-xl text-2xl font-extrabold tracking-tight sm:text-3xl">
           Turning ideas into
           <br />
           working software.
@@ -83,84 +83,87 @@ function Projects() {
           <a
             key={project.title}
             href={project.href}
-            className="group relative flex flex-col gap-3 py-6 sm:py-7"
+            className="group relative isolate flex flex-col gap-3 py-6 sm:py-7"
           >
 
+            {/* Decorative background: subtle gradient wash */}
+            <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-accent-blue/[0.05] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
             {/* Project content */}
-<div className="grid grid-cols-[1fr_auto] gap-x-6 gap-y-3 pl-9">
-  
-  {/* Main content */}
-  <div className="min-w-0">
+            <div className="grid grid-cols-[1fr_auto] gap-x-6 gap-y-3 pl-9">
+              
+              {/* Main content */}
+              <div className="min-w-0">
 
-    {/* Title row */}
-    <div className="flex items-baseline gap-4">
-      <div>
-        <h3 className="text-xl font-extrabold uppercase leading-none tracking-tight transition-colors duration-300 group-hover:text-accent-blue sm:text-2xl">
-          {project.title}
-        </h3>
+                {/* Title row */}
+                <div className="flex items-baseline gap-4">
+                  <div>
+                    <h3 className="text-xl font-extrabold uppercase leading-none tracking-tight transition-colors duration-300 group-hover:text-accent-blue sm:text-2xl">
+                      {project.title}
+                    </h3>
 
-        <p className="mt-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink-deep/40">
-          {project.category}
-        </p>
-      </div>
-    </div>
+                    <p className="mt-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink-deep/40">
+                      {project.category}
+                    </p>
+                  </div>
+                </div>
 
-    {/* Description */}
-    <p className="mt-3 max-w-xl text-xs leading-5 text-ink-deep/50 sm:text-sm">
-      {project.description}
-    </p>
+                {/* Description */}
+                <p className="mt-3 max-w-xl text-xs leading-5 text-ink-deep/50 sm:text-sm">
+                  {project.description}
+                </p>
 
-    {/* Stack */}
-    <div className="mt-3 flex flex-wrap gap-1.5">
-      {project.stack.map((tech) => (
-        <span
-          key={tech}
-          className="rounded-md bg-ink-deep/[0.06] px-2 py-1 text-[10px] font-bold uppercase"
-        >
-          {tech}
-        </span>
-      ))}
-    </div>
+                {/* Stack */}
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-md bg-ink-deep/[0.06] px-2 py-1 text-[10px] font-bold uppercase"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
 
-    {/* Background */}
-    <p className="mt-3 max-w-xl border-l-2 border-accent-blue/30 pl-3 text-xs italic leading-5 text-ink-deep/40 sm:text-sm">
-      {project.background}
-    </p>
+                {/* Background */}
+                <p className="mt-3 max-w-xl border-l-2 border-accent-blue/30 pl-3 text-xs italic leading-5 text-ink-deep/40 sm:text-sm">
+                  {project.background}
+                </p>
 
-  </div>
+              </div>
 
-  {/* Actions — right side */}
-  <div className="flex items-end gap-2 pb-0">
+              {/* Actions — right side */}
+              <div className="flex items-end gap-2 pb-0">
 
-    {/* GitHub */}
-    <span
-      onClick={(e) => {
-        e.preventDefault()
-        e.stopPropagation()
+                {/* GitHub */}
+                <span
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
 
-        window.open(
-          project.github,
-          "_blank",
-          "noopener,noreferrer"
-        )
-      }}
-      aria-label={`View ${project.title} on GitHub`}
-      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink-deep/10 text-ink-deep/40 transition-all duration-300 hover:border-accent-blue hover:bg-accent-blue hover:text-white"
-    >
-      <FaGithub className="h-4 w-4" />
-    </span>
+                    window.open(
+                      project.github,
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }}
+                  aria-label={`View ${project.title} on GitHub`}
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink-deep/10 text-ink-deep/40 transition-all duration-300 hover:border-accent-blue hover:bg-accent-blue hover:text-white"
+                >
+                  <FaGithub className="h-4 w-4" />
+                </span>
 
-    {/* Visit project */}
-    <span
-      aria-label={`Visit ${project.title}`}
-      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink-deep/10 text-sm text-ink-deep/40 transition-all duration-300 hover:border-accent-blue hover:bg-accent-blue hover:text-white"
-    >
-      ↗
-    </span>
+                {/* Visit project */}
+                <span
+                  aria-label={`Visit ${project.title}`}
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink-deep/10 text-sm text-ink-deep/40 transition-all duration-300 hover:border-accent-blue hover:bg-accent-blue hover:text-white"
+                >
+                  ↗
+                </span>
 
-  </div>
+              </div>
 
-</div>
+            </div>
 
             {/* Hover-reveal image preview, desktop only */}
             <div className="pointer-events-none absolute right-4 top-6 z-10 hidden w-48 translate-x-4 rotate-2 overflow-visible rounded-lg border border-ink-deep/10 opacity-0 shadow-xl shadow-black/20 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 lg:block">
