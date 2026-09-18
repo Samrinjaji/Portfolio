@@ -2,6 +2,10 @@ import {
   FaGithub,
 } from "react-icons/fa";
 
+import owwaImage from "../assets/owwa.png"
+import portfolioImage from "../assets/portfolio.png"
+import gasSmokeImage from "../assets/gas-smoke.jpeg"
+
 function Projects() {
   const projects = [
     {
@@ -13,7 +17,7 @@ function Projects() {
       background:
         "Built as my capstone. OWWA's internal process for granting staff access was manual and inconsistent, so I designed a role-based system to make access control predictable and auditable.",
       stack: ["HTML", "CSS3", "JavaScript", "PHP"],
-      image: "/src/assets/owwa.png",
+      image: owwaImage,
       href: "https://example.com/",
       github: "https://github.com/Samrinjaji/owwa-scholarship-system",
     },
@@ -26,7 +30,7 @@ function Projects() {
       background:
         "Built it during to test my skills in front end development",
       stack: ["HTML", "CSS", "Javascript"],
-      image: "/src/assets/portfolio.png",
+      image: portfolioImage,
       href: "https://samrinjaji.github.io/my-portfolio/",
       github: "https://github.com/Samrinjaji/my-portfolio",
     },
@@ -39,7 +43,7 @@ function Projects() {
       background:
         "Built it during my academic year project",
       stack: ["Arduino","C++"],
-      image: "/src/assets/gas-smoke.jpeg",
+      image: gasSmokeImage,
       href: "https://example.com/",
       github: "https://github.com/Samrinjaji/arduino-gas-and-smoke-detection-with-gprs",
     },

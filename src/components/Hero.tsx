@@ -1,4 +1,6 @@
 import { useState } from "react"
+import samrinDark from "../assets/samrin-dark.png"
+import owwaImage from "../assets/owwa.png"
 
 import {
   SiReact,
@@ -65,7 +67,11 @@ function Hero() {
         {/* Profile */}
         <div className="flex animate-[heroScale_0.7s_ease-out_0.15s_both] flex-col items-center gap-3 md:items-start">
           <div className="relative aspect-square w-30 overflow-hidden rounded-xl border-2 border-accent-blue lg:w-38">
-            <img src="/src/assets/samrin-dark.png" alt="Samrin Jaji" className="h-full w-full object-cover" />
+            <img
+              src={samrinDark}
+              alt="Samrin Jaji"
+              className="h-full w-full object-cover"
+            />
           </div>
  
           <a
@@ -128,7 +134,7 @@ function Hero() {
             <div className="group relative min-h-40 overflow-hidden rounded-lg border border-ink-deep/20 cursor-pointer">
 
               <img
-                src="/src/assets/owwa.png"
+                src={owwaImage}
                 alt="OWWA project preview"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
