@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #f8f3f0;
+  --color-ink-deep: #171717;
+  --color-accent-blue: #014baa;
+
+  --font-sans: "Poppins", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
+  font-family: "Poppins", sans-serif;
+  color: #171717;
+  background: #f8f3f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f8f3f0;
+}
+
+/* GitHub contribution month spacing */
+.github-contribution-wrapper .github-contribution-months {
+  letter-spacing: 0.08em;
+}
+
+@keyframes profile-greeting {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  40% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+
+.animate-profile-greeting {
+  animation: profile-greeting 6s ease-in-out infinite;
+}
+
+@keyframes heroFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroScale {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.glitch-text {
+  animation: glitch 0.8s ease-out 1.2s both;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+
+  10% {
+    transform: translate(-3px, 2px);
+    text-shadow:
+      3px 0 #014baa,
+      -3px 0 #ff3b3b;
+  }
+
+  20% {
+    transform: translate(3px, -2px);
+    text-shadow:
+      -3px 0 #014baa,
+      3px 0 #ff3b3b;
+  }
+
+  30% {
+    transform: translate(-2px, 0);
+    text-shadow:
+      2px 0 #014baa,
+      -2px 0 #ff3b3b;
+  }
+
+  40% {
+    transform: translate(2px, 1px);
+    text-shadow:
+      -2px 0 #014baa,
+      2px 0 #ff3b3b;
+  }
+
+  50% {
+    transform: translate(-1px, -1px);
+    text-shadow:
+      1px 0 #014baa,
+      -1px 0 #ff3b3b;
+  }
+
+  60% {
+    transform: translate(1px, 0);
+    text-shadow:
+      -1px 0 #014baa,
+      1px 0 #ff3b3b;
+  }
+
+  70% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+
+  100% {
+    transform: translate(0);
+    text-shadow: none;
+  }
+}
+
+/* abolut */
