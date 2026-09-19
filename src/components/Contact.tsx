@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type FormEvent } from "react"
+import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react"
 
 import emailjs from "@emailjs/browser"
 
@@ -24,6 +24,30 @@ function Contact() {
   })
 
   const [modal, setModal] = useState<"success" | "error" | null>(null)
+
+  // Scroll animation
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      {
+        threshold: 0.15,
+      }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -67,7 +91,6 @@ function Contact() {
       }, 4000)
     } catch (error) {
       console.error("Failed to send message:", error)
-
       setModal("error")
     }
   }
@@ -75,16 +98,22 @@ function Contact() {
   return (
     <>
       <section
+        ref={sectionRef}
         id="contact"
         className="relative overflow-hidden bg-ink px-5 py-16 text-ink-deep sm:px-8 lg:px-12"
       >
         {/* Ambient background */}
         <div className="pointer-events-none absolute -right-32 -top-32 h-72 w-72 rounded-full bg-accent-blue/5 blur-3xl" />
-
         <div className="pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-accent-blue/4 blur-3xl" />
 
         {/* Section header */}
-        <div className="relative mx-auto flex w-full max-w-4xl items-center gap-3 font-mono text-[9px] font-bold uppercase tracking-[0.15em] text-ink-deep/35 sm:text-[10px]">
+        <div
+          className={`relative mx-auto flex w-full max-w-4xl items-center gap-3 font-mono text-[9px] font-bold uppercase tracking-[0.15em] text-ink-deep/35 transition-all duration-700 sm:text-[10px] ${
+            isVisible
+              ? "translate-y-0 opacity-100"
+              : "translate-y-4 opacity-0"
+          }`}
+        >
           <span className="flex shrink-0 items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-accent-blue" />
             Contact
@@ -92,15 +121,32 @@ function Contact() {
 
           <div className="h-px flex-1 bg-ink-deep/10" />
 
-          <span className="hidden sm:block">Get in touch</span>
+          <span className="hidden sm:block">
+            Get in touch
+          </span>
         </div>
 
         {/* Contact card */}
-        <div className="relative mx-auto mt-7 w-full max-w-4xl">
+        <div
+          className={`relative mx-auto mt-7 w-full max-w-4xl transition-all delay-100 duration-700 ${
+            isVisible
+              ? "translate-y-0 opacity-100"
+              : "translate-y-6 opacity-0"
+          }`}
+        >
           <div className="grid overflow-hidden rounded-xl border border-ink-deep/10 bg-ink-deep/[0.025] lg:grid-cols-[0.75fr_1.25fr]">
 
             {/* Left panel */}
-            <div className="border-b border-ink-deep/10 p-6 sm:p-7 lg:border-b-0 lg:border-r">
+            <div
+              className={`border-b border-ink-deep/10 p-6 transition-all duration-700 sm:p-7 lg:border-b-0 lg:border-r ${
+                isVisible
+                  ? "translate-x-0 opacity-100"
+                  : "-translate-x-8 opacity-0"
+              }`}
+              style={{
+                transitionDelay: "250ms",
+              }}
+            >
               <div className="relative z-10">
                 <span className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-accent-blue">
                   Let's talk
@@ -141,26 +187,50 @@ function Contact() {
                   </p>
 
                   <div className="flex items-center gap-2">
+                    {/* GitHub */}
                     <a
                       href="https://github.com/Samrinjaji"
                       aria-label="GitHub"
-                      className="flex h-8 w-8 items-center justify-center rounded-md border border-ink-deep/10 text-ink-deep/45 transition-colors hover:border-accent-blue/30 hover:text-accent-blue"
+                      className={`flex h-8 w-8 items-center justify-center rounded-md border border-ink-deep/10 text-ink-deep/45 transition-all duration-500 hover:-translate-y-1 hover:border-accent-blue/30 hover:text-accent-blue ${
+                        isVisible
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-3 opacity-0"
+                      }`}
+                      style={{
+                        transitionDelay: "650ms",
+                      }}
                     >
                       <FaGithub className="h-3.5 w-3.5" />
                     </a>
 
+                    {/* LinkedIn */}
                     <a
                       href="https://www.linkedin.com/in/samrinjaji/"
                       aria-label="LinkedIn"
-                      className="flex h-8 w-8 items-center justify-center rounded-md border border-ink-deep/10 text-ink-deep/45 transition-colors hover:border-accent-blue/30 hover:text-accent-blue"
+                      className={`flex h-8 w-8 items-center justify-center rounded-md border border-ink-deep/10 text-ink-deep/45 transition-all duration-500 hover:-translate-y-1 hover:border-accent-blue/30 hover:text-accent-blue ${
+                        isVisible
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-3 opacity-0"
+                      }`}
+                      style={{
+                        transitionDelay: "750ms",
+                      }}
                     >
                       <FaLinkedin className="h-3.5 w-3.5" />
                     </a>
 
+                    {/* Discord */}
                     <a
                       href="#"
                       aria-label="Discord"
-                      className="flex h-8 w-8 items-center justify-center rounded-md border border-ink-deep/10 text-ink-deep/45 transition-colors hover:border-accent-blue/30 hover:text-accent-blue"
+                      className={`flex h-8 w-8 items-center justify-center rounded-md border border-ink-deep/10 text-ink-deep/45 transition-all duration-500 hover:-translate-y-1 hover:border-accent-blue/30 hover:text-accent-blue ${
+                        isVisible
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-3 opacity-0"
+                      }`}
+                      style={{
+                        transitionDelay: "850ms",
+                      }}
                     >
                       <FaDiscord className="h-3.5 w-3.5" />
                     </a>
@@ -170,8 +240,16 @@ function Contact() {
             </div>
 
             {/* Right panel */}
-            <div className="p-5 sm:p-7">
-
+            <div
+              className={`p-5 transition-all duration-700 sm:p-7 ${
+                isVisible
+                  ? "translate-x-0 opacity-100"
+                  : "translate-x-8 opacity-0"
+              }`}
+              style={{
+                transitionDelay: "350ms",
+              }}
+            >
               {/* Form header */}
               <div className="mb-5 flex items-center justify-between border-b border-ink-deep/10 pb-3">
                 <div className="flex items-center gap-1.5">
@@ -186,7 +264,6 @@ function Contact() {
               </div>
 
               <form onSubmit={handleSubmit}>
-
                 {/* Name + Email */}
                 <div className="grid gap-4 sm:grid-cols-2">
 
@@ -310,6 +387,7 @@ function Contact() {
         </div>
       </section>
 
+      {/* Modal */}
       {modal && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-5 backdrop-blur-sm"
@@ -321,7 +399,6 @@ function Contact() {
             className="w-full max-w-sm overflow-hidden rounded-xl border border-ink-deep/10 bg-ink p-5 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-
             {/* Modal top bar */}
             <div className="mb-5 flex items-center justify-between border-b border-ink-deep/10 pb-3">
               <div className="flex items-center gap-1.5">
@@ -410,4 +487,3 @@ function Contact() {
 }
 
 export default Contact
-

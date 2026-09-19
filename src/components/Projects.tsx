@@ -1,12 +1,36 @@
-import {
-  FaGithub,
-} from "react-icons/fa";
+import { useState, useEffect } from "react"
+import { FaGithub } from "react-icons/fa"
 
 import owwaImage from "../assets/owwa.png"
 import portfolioImage from "../assets/portfolio.png"
 import gasSmokeImage from "../assets/gas-smoke.jpeg"
 
 function Projects() {
+
+    const [isVisible, setIsVisible] = useState(false)
+
+    useEffect(() => {
+      const section = document.getElementById("projects")
+
+      if (!section) return
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+            observer.disconnect()
+          }
+        },
+        {
+          threshold: 0.15,
+        }
+      )
+
+      observer.observe(section)
+
+      return () => observer.disconnect()
+    }, [])
+
   const projects = [
     {
       index: "01",
@@ -55,7 +79,13 @@ function Projects() {
       className="bg-ink px-6 py-16 text-ink-deep md:px-10 lg:px-16"
     >
       {/* Section divider */}
-      <div className="mx-auto flex w-full max-w-4xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink-deep/40 sm:text-xs">
+      <div
+        className={`mx-auto flex w-full max-w-4xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink-deep/40 sm:text-xs ${
+          isVisible
+            ? "animate-[heroFadeDown_0.7s_ease-out_both]"
+            : "opacity-0"
+        }`}
+      >
         <span className="flex shrink-0 items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-accent-blue" />
           Projects
@@ -69,7 +99,13 @@ function Projects() {
       </div>
 
       {/* Intro */}
-      <div className="mx-auto mt-8 w-full max-w-4xl">
+      <div
+        className={`mx-auto mt-8 w-full max-w-4xl ${
+          isVisible
+            ? "animate-[heroFadeUp_0.7s_ease-out_0.15s_both]"
+            : "opacity-0"
+        }`}
+      >
         <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-accent-blue">
           What I've built
         </p>
@@ -82,7 +118,13 @@ function Projects() {
       </div>
 
       {/* Index list */}
-      <div className="mx-auto mt-8 w-full max-w-4xl divide-y divide-ink-deep/10 border-y border-ink-deep/10">
+      <div
+        className={`mx-auto mt-8 w-full max-w-4xl divide-y divide-ink-deep/10 border-y border-ink-deep/10 ${
+          isVisible
+            ? "animate-[heroFadeUp_0.7s_ease-out_0.35s_both]"
+            : "opacity-0"
+        }`}
+      >
         {projects.map((project) => (
           <a
             key={project.title}
@@ -91,7 +133,7 @@ function Projects() {
           >
 
             {/* Decorative background: subtle gradient wash */}
-            <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-accent-blue/[0.05] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-accent-blue/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
             {/* Project content */}
             <div className="grid grid-cols-[1fr_auto] gap-x-6 gap-y-3 pl-9">
@@ -122,7 +164,7 @@ function Projects() {
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-md bg-ink-deep/[0.06] px-2 py-1 text-[10px] font-bold uppercase"
+                      className="rounded-md bg-ink-deep/6 px-2 py-1 text-[10px] font-bold uppercase"
                     >
                       {tech}
                     </span>
@@ -189,7 +231,13 @@ function Projects() {
       </div>
 
       {/* Bottom marker */}
-      <div className="mx-auto mt-3 flex w-full max-w-4xl items-center justify-between rounded-xl border border-ink-deep/10 bg-ink-deep/4 px-5 py-4">
+      <div
+        className={`mx-auto mt-3 flex w-full max-w-4xl items-center justify-between rounded-xl border border-ink-deep/10 bg-ink-deep/4 px-5 py-4 ${
+          isVisible
+            ? "animate-[heroFadeUp_0.7s_ease-out_0.65s_both]"
+            : "opacity-0"
+        }`}
+      >
         <span className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-ink-deep/30">
           More projects in progress
         </span>

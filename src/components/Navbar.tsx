@@ -9,11 +9,11 @@ import {
 } from "lucide-react"
 
 const navItems = [
-  { label: "Home", href: "#home", icon: House },
-  { label: "About", href: "#about", icon: User },
-  { label: "Projects", href: "#projects", icon: Folder },
-  { label: "Experience", href: "#experience", icon: BriefcaseBusiness },
-  { label: "Contact", href: "#contact", icon: Mail },
+  { label: "Home", href: "home", icon: House },
+  { label: "About", href: "about", icon: User },
+  { label: "Projects", href: "projects", icon: Folder },
+  { label: "Experience", href: "experience", icon: BriefcaseBusiness },
+  { label: "Contact", href: "contact", icon: Mail },
 ]
 
 export default function Navbar() {

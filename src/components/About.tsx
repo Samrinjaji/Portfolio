@@ -22,28 +22,61 @@ function About() {
 ]
 
   const [activeSlide, setActiveSlide] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
 
   // Auto-advance every 3.5s, cleans up on unmount
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % galleryImages.length)
     }, 3500)
+
     return () => clearInterval(timer)
   }, [galleryImages.length])
 
-  const goPrev = () =>
+  // Trigger About animations when the section enters the viewport
+  useEffect(() => {
+    const section = document.getElementById("about")
+
+    if (!section) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.disconnect()
+        }
+      },
+      {
+        threshold: 0.15,
+      }
+    )
+
+    observer.observe(section)
+
+    return () => observer.disconnect()
+  }, [])
+
+  const goPrev = () => {
     setActiveSlide(
       (prev) => (prev - 1 + galleryImages.length) % galleryImages.length
     )
+  }
 
-  const goNext = () =>
+  const goNext = () => {
     setActiveSlide((prev) => (prev + 1) % galleryImages.length)
+  }
 
   return (
     <section id="about" className="bg-ink px-6 py-16 text-ink-deep md:px-10 lg:px-16">
 
       {/* Section divider */}
-      <div className="mx-auto flex w-full max-w-4xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink-deep/40 sm:text-xs">
+      <div
+          className={`mx-auto flex w-full max-w-4xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink-deep/40 sm:text-xs ${
+            isVisible
+              ? "animate-[heroFadeDown_0.7s_ease-out_both]"
+              : "opacity-0"
+          }`}
+        >
         <span className="flex shrink-0 items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-accent-blue" />
           About
@@ -60,7 +93,13 @@ function About() {
       <div className="mx-auto mt-8 w-full max-w-4xl">
 
         {/* Intro */}
-        <div className="animate-[heroFadeUp_0.7s_ease-out_0.15s_both] rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 sm:p-7">
+        <div
+            className={`rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 sm:p-7 ${
+              isVisible
+                ? "animate-[heroFadeUp_0.7s_ease-out_0.15s_both]"
+                : "opacity-0"
+            }`}
+          >
 
           <div className="grid gap-8 md:grid-cols-[1.3fr_0.7fr]">
 
@@ -74,7 +113,7 @@ function About() {
                     Beyond the code
                     </p>
 
-                    <h2 className="mt-2 font-extrabold text-ink-deep sm:text-2xl">
+                    <h2 className="mt-2 font-extrabold text-ink-deep sm:text-3xl">
                     Transforming Ideas Into
                     <br />
                     Digital Excellence
@@ -172,7 +211,13 @@ function About() {
         <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
 
           {/* Development */}
-          <div className="group relative isolate overflow-hidden rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30">
+          <div
+              className={`group relative isolate overflow-hidden rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30 ${
+                isVisible
+                  ? "animate-[heroFadeUp_0.7s_ease-out_0.35s_both]"
+                  : "opacity-0"
+              }`}
+            >
 
             {/* Decorative background: gradient wash + blurred circle */}
             <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-accent-blue/8 via-transparent to-transparent" />
@@ -202,10 +247,16 @@ function About() {
           </div>
 
           {/* Gallery */}
-            <div className="group relative isolate overflow-hidden rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30">
+          <div
+            className={`group relative isolate overflow-hidden rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30 ${
+              isVisible
+                ? "animate-[heroFadeUp_0.7s_ease-out_0.5s_both]"
+                : "opacity-0"
+            }`}
+          >
 
             {/* Decorative background: gradient wash + blurred circle */}
-            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-bl from-accent-blue/8] via-transparent to-transparent" />
+            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-bl from-accent-blue/8 via-transparent to-transparent" />
             <div className="pointer-events-none absolute -left-10 -top-10 -z-10 h-32 w-32 rounded-full bg-accent-blue/20 blur-xl transition-opacity duration-300 group-hover:opacity-90" />
 
             <div className="flex items-center justify-between">
@@ -278,7 +329,13 @@ function About() {
             </div>
 
           {/* Bottom metadata */}
-          <div className="mt-3 flex flex-col gap-3 rounded-xl border border-ink-deep/10 bg-ink-deep/4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+          <div
+            className={`mt-3 flex flex-col gap-3 rounded-xl border border-ink-deep/10 bg-ink-deep/4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between ${
+              isVisible
+                ? "animate-[heroFadeUp_0.7s_ease-out_0.65s_both]"
+                : "opacity-0"
+            }`}
+          >
 
             <span className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-ink-deep/30">
               Always learning / always building
