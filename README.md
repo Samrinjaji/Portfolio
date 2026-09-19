@@ -8,7 +8,6 @@ The portfolio focuses on clean design, responsive layouts, and a practical prese
 
 **[View Portfolio](https://samrinjaji.vercel.app/)**
 
-> Replace the link above with your deployed portfolio URL.
 
 ## 📌 About
 
@@ -38,7 +37,6 @@ This portfolio serves as a central place to showcase my development projects, ex
 * Git
 * GitHub
 * VS Code
-* Cursor
 * Figma
 * Linux
 
@@ -104,41 +102,6 @@ Portfolio/
 
 > The structure may change as the portfolio continues to evolve.
 
-## 💻 Getting Started
-
-### Prerequisites
-
-Make sure you have the following installed:
-
-* Node.js
-* npm
-* Git
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/Samrinjaji/portfolioV2.git
-```
-
-### Navigate to the Project
-
-```bash
-cd portfolioV2
-```
-
-### Install Dependencies
-
-```bash
-npm install
-```
-
-### Start the Development Server
-
-```bash
-npm run dev
-```
-
-The development server will provide a local URL that you can open in your browser.
 
 ## 📱 Responsive Design
 
@@ -180,10 +143,10 @@ Planned improvements may include:
 
 If you'd like to connect or discuss a project, you can reach me through the social links available on my portfolio.
 
-* **Portfolio:** [Your Website](#)
+* **Portfolio:** [samrinjaji](https://samrinjaji.vercel.app/)
 * **GitHub:** [Samrinjaji](https://github.com/Samrinjaji)
-* **LinkedIn:** [Your LinkedIn](#)
-* **Discord:** [Your Discord](#)
+* **LinkedIn:** [Samrinjaji](https://www.linkedin.com/in/samrinjaji/)
+* **Discord:** [Samrinjjaji](https://discord.com/channels/@me)
 
 ## 📄 License
 

@@ -1,5 +1,4 @@
-
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {
   House,
   User,
@@ -19,6 +18,37 @@ const navItems = [
 export default function Navbar() {
   const [activeItem, setActiveItem] = useState("Home")
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.35
+
+      let currentSection = "Home"
+
+      navItems.forEach((item) => {
+        const section = document.querySelector(item.href)
+
+        if (section) {
+          const sectionTop = (section as HTMLElement).offsetTop
+
+          if (scrollPosition >= sectionTop) {
+            currentSection = item.label
+          }
+        }
+      })
+
+      setActiveItem(currentSection)
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    // Check the initial position
+    handleScroll()
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
+
   return (
     <nav className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2">
       <div className="flex items-center gap-1 rounded-full border border-ink-deep/10 bg-ink/90 px-2 py-2 shadow-lg backdrop-blur-md">
@@ -30,7 +60,6 @@ export default function Navbar() {
             <a
               key={item.label}
               href={item.href}
-              onClick={() => setActiveItem(item.label)}
               className={`group flex items-center gap-2 rounded-full px-3 py-2 transition-all ${
                 isActive
                   ? "bg-accent-blue/70 text-white"
@@ -49,4 +78,3 @@ export default function Navbar() {
     </nav>
   )
 }
-
