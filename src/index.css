@@ -3,9 +3,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #f8f3f0;
+  --color-ink: #DEDEDE;
   --color-ink-deep: #171717;
-  --color-accent-blue: #014baa;
+  --color-accent: #F2572B;
+  --color-doom: #4D4D4D;
 
   --font-sans: "Poppins", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -13,8 +14,8 @@
 
 :root {
   font-family: "Poppins", sans-serif;
-  color: #171717;
-  background: #f8f3f0;
+  color: #DEDEDE;
+  background: #171717;
 }
 
 * {
@@ -24,7 +25,7 @@
 body {
   margin: 0;
   min-width: 320px;
-  background: #f8f3f0;
+  background: #171717;
 }
 
 /* GitHub contribution month spacing */

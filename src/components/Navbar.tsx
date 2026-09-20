@@ -96,7 +96,7 @@ export default function Navbar() {
       aria-label="Primary"
       className="fixed bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 z-50 -translate-x-1/2"
     >
-      <div className="flex items-center gap-1 rounded-full border border-ink-deep/10 bg-ink/90 px-2 py-2 shadow-lg backdrop-blur-md">
+      <div className="flex items-center gap-1 rounded-full border border-ink/10 bg-doom px-2 py-2 shadow-lg backdrop-blur-md">
         {navItems.map(({ id, label, icon: Icon }) => {
           const isActive = activeId === id
 
@@ -109,8 +109,8 @@ export default function Navbar() {
               aria-current={isActive ? "location" : undefined}
               className={`flex items-center gap-2 rounded-full px-3 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue ${
                 isActive
-                  ? "bg-accent-blue/70 text-white"
-                  : "text-ink-deep/50 hover:bg-ink-deep/10"
+                  ? "bg-accent/50 text-ink"
+                  : "text-ink/50 hover:bg-ink-deep/10"
               }`}
             >
               <Icon className="h-4 w-4" aria-hidden="true" />
