@@ -74,8 +74,7 @@ function Projects() {
   ]
 
   return (
-    <section
-      id="projects"
+    <div
       className="bg-ink px-6 py-16 text-ink-deep md:px-10 lg:px-16"
     >
       {/* Section divider */}
@@ -132,7 +131,7 @@ function Projects() {
             className="group relative isolate flex flex-col gap-3 py-6 sm:py-7"
           >
 
-            {/* Decorative background: subtle gradient wash */}
+            {/* Decorative background */}
             <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-accent-blue/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
             {/* Project content */}
@@ -247,7 +246,7 @@ function Projects() {
           Building
         </span>
       </div>
-    </section>
+    </div>
   )
 }
 

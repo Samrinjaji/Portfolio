@@ -17,32 +17,13 @@ import "github-contrib-graph/styles.css"
 
 function Hero() {
 
-  {/*const [darkMode, setDarkMode] = useState(false)*/}
-  
   const [githubMonths, setGithubMonths] = useState <
     { name: string; totalWeeks: number }[]
   >([])
-
-  {/*
-  const toggleTheme = () => {
-    setDarkMode(!darkMode)
-    document.documentElement.classList.toggle("dark")
-  }*/}
   
   return (
     
-    <section id="home" className="relative min-h-screen bg-ink text-ink-deep px-6 py-6  md:px-10 lg:px-16">
-
-      {/* Theme Toggle 
-      <button
-        type="button"
-        onClick={toggleTheme}
-        aria-label="Toggle dark mode"
-        className="cursor-pointer absolute right-6 top-6 flex h-9 w-9 items-center justify-center rounded-full border border-ink-deep/10 bg-ink-deep/5 text-sm transition-all hover:bg-accent-blue/60 hover:text-white md:right-10 lg:right-16"
-      >
-        {darkMode ? "☀" : "☾"}
-      </button>
-      */}
+    <div className="relative min-h-screen bg text-ink-deep px-6 py-6  md:px-10 lg:px-16">
 
       {/* Terminal */}
       <div className="mx-auto mb-8 hidden w-full animate-[heroFadeDown_0.7s_ease-out_both] md:block md:max-w-5xl">
@@ -251,7 +232,7 @@ function Hero() {
           {/* Tech Stack */}
           <div className="relative mt-4 flex min-h-52 items-center justify-center">
 
-            {/* React */}
+            {/* React — back of the pile */}
             <div className="absolute left-6 top-3 z-10 flex h-14 w-14 -rotate-6 items-center justify-center rounded-lg border-2 border-ink-deep/10 bg-ink shadow-sm transition-transform duration-300 hover:z-50 hover:rotate-0 hover:-translate-y-1">
               <SiReact className="h-7 w-7 shrink-0 text-blue-500" />
             </div>
@@ -398,7 +379,7 @@ function Hero() {
         
       </div>
 
-    </section>
+    </div>
 
   )
 }

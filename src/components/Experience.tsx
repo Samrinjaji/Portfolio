@@ -54,9 +54,8 @@ function Experience() {
   }, [])
 
   return (
-    <section
+    <div
       ref={sectionRef}
-      id="experience"
       className="relative isolate overflow-hidden bg-ink px-6 py-16 text-ink-deep md:px-10 lg:px-16"
     >
       {/* Subtle background glow */}
@@ -197,7 +196,7 @@ function Experience() {
           </div>
         ))}
       </div>
-    </section>
+    </div>
   )
 }
 

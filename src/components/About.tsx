@@ -67,7 +67,7 @@ function About() {
   }
 
   return (
-    <section id="about" className="bg-ink px-6 py-16 text-ink-deep md:px-10 lg:px-16">
+    <div className="bg-ink px-6 py-16 text-ink-deep md:px-10 lg:px-16">
 
       {/* Section divider */}
       <div
@@ -350,7 +350,7 @@ function About() {
 
         </div>
 
-    </section>
+    </div>
   )
 }
 
