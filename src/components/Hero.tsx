@@ -207,22 +207,36 @@ function Hero() {
 
         </div>
 
-        {/* Projects */}
+        {/* Projects — folder-tab shape: a small rounded-top tab overlapping
+            a body whose top-left corner is square, so the seam between
+            them is invisible and it reads as one continuous folder shape */}
         <a
           href="#projects"
-          className="group flex min-h-64 animate-[heroFadeUp_0.7s_ease-out_0.7s_both] flex-col justify-between rounded-xl bg-accent-blue p-5 text-white transition-transform duration-300 hover:-translate-y-1 lg:col-span-1"
+          className="group relative flex min-h-64 animate-[heroFadeUp_0.7s_ease-out_0.7s_both] flex-col transition-transform duration-300 hover:-translate-y-1 lg:col-span-1"
         >
-          <div className="flex items-center justify-between"> 
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/60"> Projects </span> 
-          </div> 
+          <div className="ml-auto h-7 w-[65%] shrink-0 rounded-tl-2xl rounded-tr-xl bg-accent-blue" />
 
-          <div> 
+          <div className="flex flex-1 flex-col justify-between rounded-xl rounded-tr-none bg-accent-blue p-5 text-white">
+
+            <div className="flex items-start justify-between">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/60">
+                Projects
+              </span>
+
+              <span className="text-xl transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                ↗
+              </span>
+            </div>
+
+            <div> 
             <span className="text-5xl font-extrabold leading-none"> 10+ </span> 
             <p className="mt-2 text-xs font-bold uppercase text-white/60"> Projects built </p> 
           </div> 
 
           <div className="flex items-end justify-between"> 
-            <p className="max-w-40 text-sm leading-5 text-white/50"> Websites, applications, experiments, and personal projects. </p> <span className="text-xl transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"> ↗ </span>
+            <p className="max-w-40 text-sm leading-5 text-white/50"> Websites, applications, experiments, and personal projects. </p>
+          </div>
+
           </div>
         </a>
 
