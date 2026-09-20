@@ -78,7 +78,7 @@ function Hero() {
             href="https://ko-fi.com/samrinjaji"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex w-30 items-center justify-center gap-2 rounded-lg bg-ink-deep/6 py-2 text-xs font-bold text-ink-deep/70 transition-transform hover:-translate-y-0.5 lg:w-38 sm:text-sm"
+            className="flex w-38 items-center justify-center gap-2 rounded-lg bg-ink-deep/6 py-2 text-xs font-bold text-ink-deep/70 transition-transform hover:-translate-y-0.5 lg:w-38 sm:text-sm"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
               <path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.575-.048 2.596-2.306 2.596-2.306s.043-1.454.049-3.15c1.153.076 2.483-.062 3.15-.62.968-.812 1.612-2.622.512-4.574zm-6.25 4.577c-.043.015-1.283.015-3.183.001-.019-1.453-.023-2.995-.003-4.4h3.2c.005.004.013.024.02.049.116.446.135 1.043.135 1.043s-.001 2.36-.169 3.307z" />
@@ -93,7 +93,7 @@ function Hero() {
           </p>
  
           <h1
-            className="glitch-text relative w-full text-2xl font-extrabold uppercase leading-[0.95] tracking-tighter lg:text-3xl"
+            className="glitch-text relative w-full text-2xl font-extrabold uppercase leading-[0.95] tracking-tighter lg:text-3xl text-center md:text-left"
             data-text="Developer. Creator. Problem Solver."
           >
             Developer. Creator. Problem Solver.
@@ -251,10 +251,10 @@ function Hero() {
         </div>
 
         {/* Tech Stack */}
-        <div className="relative mt-4 flex min-h-[190px] items-center justify-center">
+        <div className="relative mt-4 flex min-h-47.5 items-center justify-center">
 
           {/* React */}
-          <div className="absolute left-2 top-3 z-10 w-[82px] rotate-[-6deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-30 hover:rotate-0 hover:-translate-y-1">
+          <div className="absolute left-2 top-3 z-10 w-20.5 -rotate-6 rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-30 hover:rotate-0 hover:-translate-y-1">
             <div className="flex items-center gap-2">
               <SiReact className="h-5 w-5 shrink-0 text-blue-500" />
               <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
@@ -264,7 +264,7 @@ function Hero() {
           </div>
 
           {/* TypeScript */}
-          <div className="absolute right-2 top-1 z-20 w-[90px] rotate-[5deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-30 hover:rotate-0 hover:-translate-y-1">
+          <div className="absolute right-2 top-1 z-20 w-22.5 rotate-[5deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-30 hover:rotate-0 hover:-translate-y-1">
             <div className="flex items-center gap-2">
               <SiTypescript className="h-5 w-5 shrink-0 text-[#3178C6]" />
               <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
@@ -274,7 +274,7 @@ function Hero() {
           </div>
 
           {/* Tailwind */}
-          <div className="absolute left-6 top-16 z-30 w-[88px] rotate-[3deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
+          <div className="absolute left-6 top-16 z-30 w-22 rotate-3 rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
             <div className="flex items-center gap-2">
               <SiTailwindcss className="h-5 w-5 shrink-0 text-[#06B6D4]" />
               <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
@@ -284,7 +284,7 @@ function Hero() {
           </div>
 
           {/* JavaScript */}
-          <div className="absolute right-5 top-14 z-20 w-[92px] rotate-[-4deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
+          <div className="absolute right-5 top-14 z-20 w-23 rotate-[-4deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
             <div className="flex items-center gap-2">
               <SiJavascript className="h-5 w-5 shrink-0 text-[#F7DF1E]" />
               <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
@@ -294,7 +294,7 @@ function Hero() {
           </div>
 
           {/* Node.js */}
-          <div className="absolute bottom-4 left-4 z-10 w-[82px] rotate-[-4deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
+          <div className="absolute bottom-4 left-4 z-10 w-20.5 rotate-[-4deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
             <div className="flex items-center gap-2">
               <SiNodedotjs className="h-5 w-5 shrink-0 text-[#5FA04E]" />
               <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
@@ -304,7 +304,7 @@ function Hero() {
           </div>
 
           {/* PHP */}
-          <div className="absolute bottom-2 right-4 z-20 w-[76px] rotate-[7deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
+          <div className="absolute bottom-2 right-4 z-20 w-19 rotate-[7deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
             <div className="flex items-center gap-2">
               <SiPhp className="h-5 w-5 shrink-0 text-[#777BB4]" />
               <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
