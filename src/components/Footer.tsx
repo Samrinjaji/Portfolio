@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="border-t border-ink-deep/10 bg-ink px-5 py-8 text-ink-deep sm:px-8 lg:px-12">
+    <footer className="border-t border-ink/10 px-5 py-8 text-ink sm:px-8 lg:px-12">
       <div className="mx-auto w-full max-w-5xl">
 
         {/* Main footer row */}
@@ -10,15 +10,15 @@ function Footer() {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-lg font-black tracking-tight">
-                SJ<span className="text-accent-blue">.</span>
+                SJ<span className="text-accent">.</span>
               </span>
 
-              <span className="font-mono text-[8px] uppercase tracking-[0.15em] text-ink-deep/30">
+              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-ink/30">
                 Full Stack Developer
               </span>
             </div>
 
-            <p className="mt-2 text-[11px] text-ink-deep/40">
+            <p className="mt-2 text-xs text-ink/40">
               Building reliable web applications with purpose.
             </p>
           </div>
@@ -26,31 +26,31 @@ function Footer() {
           {/* Navigation + Back to top */}
           <div className="flex items-center gap-4">
 
-            <nav className="flex flex-wrap items-center gap-4 font-mono text-[9px] font-bold uppercase tracking-[0.12em] text-ink-deep/40">
+            <nav className="flex flex-wrap items-center gap-4 font-mono text-[9px] font-bold uppercase tracking-[0.12em] text-ink/40">
               <a
                 href="#home"
-                className="transition-colors hover:text-accent-blue"
+                className="transition-colors hover:text-accent"
               >
                 Home
               </a>
 
               <a
                 href="#about"
-                className="transition-colors hover:text-accent-blue"
+                className="transition-colors hover:text-accent"
               >
                 About
               </a>
 
               <a
                 href="#projects"
-                className="transition-colors hover:text-accent-blue"
+                className="transition-colors hover:text-accent"
               >
                 Projects
               </a>
 
               <a
                 href="#contact"
-                className="transition-colors hover:text-accent-blue"
+                className="transition-colors hover:text-accent"
               >
                 Contact
               </a>
@@ -59,7 +59,7 @@ function Footer() {
             <a
               href="#home"
               aria-label="Back to top"
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-accent-blue text-white transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-accent-blue/20"
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-accent-blue text-ink transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-accent/20"
             >
               ↑
             </a>
@@ -67,14 +67,14 @@ function Footer() {
         </div>
 
         {/* Bottom line */}
-        <div className="mt-7 flex flex-col gap-2 border-t border-ink-deep/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-7 flex flex-col gap-2 border-t border-ink/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
 
           <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-ink-deep/25">
             © {new Date().getFullYear()} Samrin Jaji
           </p>
 
-          <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-ink-deep/25">
-            <span className="text-accent-blue/60">//</span> system.online
+          <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-ink/25">
+            <span className="text-accent/60">//</span> system.online
           </p>
 
         </div>

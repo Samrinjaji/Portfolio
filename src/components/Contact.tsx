@@ -65,10 +65,6 @@ const DIALOG_CONTENT = {
 type DialogStatus = keyof typeof DIALOG_CONTENT
 type Status = "idle" | "sending" | DialogStatus
 
-/* -------------------------------------------------------------------------- */
-/*  Helpers                                                                   */
-/* -------------------------------------------------------------------------- */
-
 const prefersReducedMotion = () =>
   typeof window !== "undefined" &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -107,11 +103,8 @@ const reveal = (visible: boolean, hidden: string, duration = "duration-700") =>
   }`
 
 const focusRing =
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
 
-/* -------------------------------------------------------------------------- */
-/*  Small components                                                          */
-/* -------------------------------------------------------------------------- */
 
 function TrafficLights() {
   return (
@@ -146,26 +139,26 @@ function Field({
 }: FieldProps) {
   // text-base on mobile prevents iOS Safari from zooming in on focus
   const control =
-    "w-full bg-transparent text-base outline-none placeholder:text-ink-deep/40 sm:text-sm"
+    "w-full bg-transparent text-base outline-none placeholder:text-ink/40 sm:text-sm"
 
   return (
     <div>
       <label
         htmlFor={id}
-        className="mb-1.5 block font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink-deep/60"
+        className="mb-1.5 block font-mono text-base font-bold uppercase tracking-[0.12em] text-ink/60"
       >
         {label}
       </label>
 
       <div
-        className={`group flex gap-2 border-b border-ink-deep/15 py-2 transition-colors focus-within:border-accent-blue ${
+        className={`group flex gap-2 border-b border-ink/15 py-2 transition-colors focus-within:border-accent ${
           multiline ? "items-start" : "items-center"
         }`}
       >
         {Icon && (
           <Icon
             aria-hidden="true"
-            className={`h-2.5 w-2.5 shrink-0 text-ink-deep/30 group-focus-within:text-accent-blue ${
+            className={`h-2.5 w-2.5 shrink-0 text-ink/30 group-focus-within:text-accent ${
               multiline ? "mt-1.5" : ""
             }`}
           />
@@ -232,7 +225,7 @@ function StatusDialog({
       className="m-auto w-[calc(100%-2.5rem)] max-w-sm bg-transparent p-0 backdrop:bg-black/30 backdrop:backdrop-blur-sm"
     >
       {content && Icon && (
-        <div className="overflow-hidden rounded-xl border border-ink-deep/10 bg-ink p-5 text-ink-deep shadow-2xl">
+        <div className="overflow-hidden rounded-xl border border-ink/10  p-5 text-ink-deep shadow-2xl">
           <div className="mb-5 flex items-center justify-between border-b border-ink-deep/10 pb-3">
             <TrafficLights />
 
@@ -240,7 +233,7 @@ function StatusDialog({
               type="button"
               onClick={onClose}
               aria-label="Close dialog"
-              className={`flex h-7 w-7 items-center justify-center rounded-md text-ink-deep/50 transition-colors hover:bg-ink-deep/5 hover:text-ink-deep ${focusRing}`}
+              className={`flex h-7 w-7 items-center justify-center rounded-md text-ink-deep/50 transition-colors hover:bg-ink/5 hover:text-ink ${focusRing}`}
             >
               <FaTimes className="h-3 w-3" aria-hidden="true" />
             </button>
@@ -268,7 +261,7 @@ function StatusDialog({
 
             <p
               id="contact-dialog-desc"
-              className="mt-2 max-w-xs text-sm leading-5 text-ink-deep/60"
+              className="mt-2 max-w-xs text-sm leading-5 text-ink/60"
             >
               {content.body}
             </p>
@@ -277,14 +270,14 @@ function StatusDialog({
               type="button"
               autoFocus
               onClick={onClose}
-              className={`mt-5 w-full rounded-md px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white transition-all hover:-translate-y-0.5 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${focusRing} ${content.button}`}
+              className={`mt-5 w-full rounded-md px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-ink transition-all hover:-translate-y-0.5 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${focusRing} ${content.button}`}
             >
               {content.action}
             </button>
 
             <span
               aria-hidden="true"
-              className="mt-3 font-mono text-[10px] uppercase tracking-[0.15em] text-ink-deep/35"
+              className="mt-3 font-mono text-[10px] uppercase tracking-[0.15em] text-ink/35"
             >
               {content.tag}
             </span>
@@ -295,9 +288,6 @@ function StatusDialog({
   )
 }
 
-/* -------------------------------------------------------------------------- */
-/*  Contact                                                                   */
-/* -------------------------------------------------------------------------- */
 
 export default function Contact() {
   const [sectionRef, isVisible] = useInView<HTMLElement>()
@@ -350,21 +340,21 @@ export default function Contact() {
         ref={sectionRef}
         id="contact"
         aria-labelledby="contact-heading"
-        className="relative overflow-hidden bg-ink px-5 py-16 text-ink-deep sm:px-8 lg:px-12"
+        className="relative overflow-hidden  px-5 py-16 text-ink sm:px-8 lg:px-12"
       >
         {/* Ambient background */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-32 -top-32 h-72 w-72 rounded-full bg-accent-blue/5 blur-3xl"
+          className="pointer-events-none absolute -right-32 -top-32 h-72 w-72 rounded-full bg-accent/5 blur-3xl"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-accent-blue/4 blur-3xl"
+          className="pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-accent/4 blur-3xl"
         />
 
         {/* Section header */}
         <div
-          className={`relative mx-auto flex w-full max-w-4xl items-center gap-3 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink-deep/50 ${reveal(
+          className={`relative mx-auto flex w-full max-w-4xl items-center gap-3 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink/50 ${reveal(
             isVisible,
             "translate-y-4"
           )}`}
@@ -372,12 +362,12 @@ export default function Contact() {
           <span className="flex shrink-0 items-center gap-2">
             <span
               aria-hidden="true"
-              className="h-1.5 w-1.5 rounded-full bg-accent-blue"
+              className="h-1.5 w-1.5 rounded-full bg-accent"
             />
             Contact
           </span>
 
-          <div aria-hidden="true" className="h-px flex-1 bg-ink-deep/10" />
+          <div aria-hidden="true" className="h-px flex-1 bg-ink/10" />
 
           <span className="hidden sm:block">Get in touch</span>
         </div>
@@ -389,16 +379,16 @@ export default function Contact() {
             "translate-y-6"
           )}`}
         >
-          <div className="grid overflow-hidden rounded-xl border border-ink-deep/10 bg-ink-deep/[0.025] lg:grid-cols-[0.75fr_1.25fr]">
+          <div className="grid overflow-hidden rounded-xl border border-ink/10 bg-ink/2.5 lg:grid-cols-[0.75fr_1.25fr]">
             {/* Left panel */}
             <div
-              className={`border-b border-ink-deep/10 p-6 sm:p-7 lg:border-b-0 lg:border-r ${reveal(
+              className={`border-b border-ink/10 p-6 sm:p-7 lg:border-b-0 lg:border-r ${reveal(
                 isVisible,
                 "-translate-x-8"
               )}`}
               style={{ transitionDelay: "250ms" }}
             >
-              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-accent-blue">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-accent">
                 Let&apos;s talk
               </span>
 
@@ -409,7 +399,7 @@ export default function Contact() {
                 Have a project in mind?
               </h2>
 
-              <p className="mt-3 max-w-sm text-sm leading-6 text-ink-deep/60">
+              <p className="mt-3 max-w-sm text-sm leading-6 text-ink/60">
                 Tell me what you&apos;re working on and let&apos;s see how I can
                 help bring it to life.
               </p>
@@ -425,11 +415,11 @@ export default function Contact() {
                 </span>
 
                 <div>
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-accent-blue">
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-accent">
                     Available for work
                   </p>
 
-                  <p className="mt-1 text-xs leading-5 text-ink-deep/60">
+                  <p className="mt-1 text-xs leading-5 text-ink/60">
                     Freelance projects, collaborations, and development
                     opportunities.
                   </p>
@@ -437,8 +427,8 @@ export default function Contact() {
               </div>
 
               {/* Social links */}
-              <div className="mt-7 border-t border-ink-deep/10 pt-5">
-                <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink-deep/50">
+              <div className="mt-7 border-t border-ink/10 pt-5">
+                <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink/50">
                   Find me online
                 </p>
 
@@ -450,7 +440,7 @@ export default function Contact() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${label} (opens in a new tab)`}
-                        className={`flex h-9 w-9 items-center justify-center rounded-md border border-ink-deep/10 text-ink-deep/55 hover:-translate-y-1 hover:border-accent-blue/30 hover:text-accent-blue motion-reduce:hover:translate-y-0 ${focusRing} ${reveal(
+                        className={`flex h-9 w-9 items-center justify-center rounded-md border border-ink/10 text-ink/55 hover:-translate-y-1 hover:border-accent/30 hover:text-accent motion-reduce:hover:translate-y-0 ${focusRing} ${reveal(
                           isVisible,
                           "translate-y-3",
                           "duration-500"
@@ -470,12 +460,12 @@ export default function Contact() {
               className={`p-5 sm:p-7 ${reveal(isVisible, "translate-x-8")}`}
               style={{ transitionDelay: "350ms" }}
             >
-              <div className="mb-5 flex items-center justify-between border-b border-ink-deep/10 pb-3">
+              <div className="mb-5 flex items-center justify-between border-b border-ink/10 pb-3">
                 <TrafficLights />
 
                 <span
                   aria-hidden="true"
-                  className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink-deep/40"
+                  className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/40"
                 >
                   contact.tsx
                 </span>
@@ -524,7 +514,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSending}
-                  className={`group flex w-full items-center justify-between rounded-md bg-accent-blue px-4 py-3 text-xs font-bold uppercase tracking-wide text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-accent-blue/20 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${focusRing}`}
+                  className={`group flex w-full items-center justify-between rounded-md bg-accent px-4 py-3 text-xs font-bold uppercase tracking-wide text-ink transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-accent/20 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${focusRing}`}
                 >
                   <span className="flex items-center gap-2">
                     <FaPaperPlane className="h-2.5 w-2.5" aria-hidden="true" />
@@ -540,7 +530,7 @@ export default function Contact() {
                 {/* Honeypot (hidden from people and screen readers) */}
                 <div
                   aria-hidden="true"
-                  className="absolute -left-[9999px] h-0 w-0 overflow-hidden"
+                  className="absolute left-[-9999px] h-0 w-0 overflow-hidden"
                 >
                   <label htmlFor="website">Leave this field empty</label>
                   <input
@@ -556,12 +546,12 @@ export default function Contact() {
           </div>
 
           {/* Footer note */}
-          <div className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.12em] text-ink-deep/50">
+          <div className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.12em] text-ink/50">
             <span>I&apos;ll get back to you as soon as possible.</span>
 
             <span
               aria-hidden="true"
-              className="hidden text-accent-blue/60 sm:block"
+              className="hidden text-accent/60 sm:block"
             >
               // connection.ready
             </span>
