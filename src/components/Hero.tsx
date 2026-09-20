@@ -207,9 +207,7 @@ function Hero() {
 
         </div>
 
-        {/* Projects — folder-tab shape: a small rounded-top tab overlapping
-            a body whose top-left corner is square, so the seam between
-            them is invisible and it reads as one continuous folder shape */}
+        {/* Projects */}
         <a
           href="#projects"
           className="group relative flex min-h-64 animate-[heroFadeUp_0.7s_ease-out_0.7s_both] flex-col transition-transform duration-300 hover:-translate-y-1 lg:col-span-1"
@@ -241,80 +239,50 @@ function Hero() {
         </a>
 
         {/* Stack */}
-      <div className="animate-[heroFadeUp_0.7s_ease-out_0.85s_both] rounded-xl border border-ink-deep/10 bg-ink-deep/6 p-2 lg:col-span-1">
+        <div className="animate-[heroFadeUp_0.7s_ease-out_0.85s_both] rounded-xl border border-ink-deep/10 bg-ink-deep/6 p-2 lg:col-span-1">
 
-        {/* Header */}
-        <div className="flex items-center justify-between">
-          <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-ink-deep/40">
-            Stack
-          </span>
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-ink-deep/40">
+              Stack
+            </span>
+          </div>
+
+          {/* Tech Stack */}
+          <div className="relative mt-4 flex min-h-52 items-center justify-center">
+
+            {/* React */}
+            <div className="absolute left-6 top-3 z-10 flex h-14 w-14 -rotate-6 items-center justify-center rounded-lg border-2 border-ink-deep/10 bg-ink shadow-sm transition-transform duration-300 hover:z-50 hover:rotate-0 hover:-translate-y-1">
+              <SiReact className="h-7 w-7 shrink-0 text-blue-500" />
+            </div>
+
+            {/* TypeScript */}
+            <div className="absolute right-4 top-1 z-20 flex h-14 w-14 rotate-[5deg] items-center justify-center rounded-lg border-2 border-ink-deep/10 bg-ink shadow-sm transition-transform duration-300 hover:z-50 hover:rotate-0 hover:-translate-y-1">
+              <SiTypescript className="h-7 w-7 shrink-0 text-[#3178C6]" />
+            </div>
+
+            {/* Tailwind */}
+            <div className="absolute left-9 top-16 z-30 flex h-14 w-14 rotate-3 items-center justify-center rounded-lg border-2 border-ink-deep/10 bg-ink shadow-md transition-transform duration-300 hover:z-50 hover:rotate-0 hover:-translate-y-1">
+              <SiTailwindcss className="h-7 w-7 shrink-0 text-[#06B6D4]" />
+            </div>
+
+            {/* JavaScript */}
+            <div className="absolute right-7 top-14 z-30 flex h-14 w-14 rotate-[-4deg] items-center justify-center rounded-lg border-2 border-ink-deep/10 bg-ink shadow-md transition-transform duration-300 hover:z-50 hover:rotate-0 hover:-translate-y-1">
+              <SiJavascript className="h-7 w-7 shrink-0 text-[#F7DF1E]" />
+            </div>
+
+            {/* Node.js */}
+            <div className="absolute bottom-5 left-12 z-40 flex h-14 w-14 rotate-[-4deg] items-center justify-center rounded-lg border-2 border-ink-deep/10 bg-ink shadow-lg transition-transform duration-300 hover:z-60 hover:rotate-0 hover:-translate-y-1">
+              <SiNodedotjs className="h-7 w-7 shrink-0 text-[#5FA04E]" />
+            </div>
+
+            {/* PHP */}
+            <div className="absolute bottom-3 right-11 z-50 flex h-14 w-14 rotate-[7deg] items-center justify-center rounded-lg border-2 border-ink-deep/10 bg-ink shadow-xl transition-transform duration-300 hover:z-60 hover:rotate-0 hover:-translate-y-1">
+              <SiPhp className="h-7 w-7 shrink-0 text-[#777BB4]" />
+            </div>
+
+          </div>
         </div>
-
-        {/* Tech Stack */}
-        <div className="relative mt-4 flex min-h-47.5 items-center justify-center">
-
-          {/* React */}
-          <div className="absolute left-2 top-3 z-10 w-20.5 -rotate-6 rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-30 hover:rotate-0 hover:-translate-y-1">
-            <div className="flex items-center gap-2">
-              <SiReact className="h-5 w-5 shrink-0 text-blue-500" />
-              <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
-                React
-              </span>
-            </div>
-          </div>
-
-          {/* TypeScript */}
-          <div className="absolute right-2 top-1 z-20 w-22.5 rotate-[5deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-30 hover:rotate-0 hover:-translate-y-1">
-            <div className="flex items-center gap-2">
-              <SiTypescript className="h-5 w-5 shrink-0 text-[#3178C6]" />
-              <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
-                TypeScript
-              </span>
-            </div>
-          </div>
-
-          {/* Tailwind */}
-          <div className="absolute left-6 top-16 z-30 w-22 rotate-3 rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
-            <div className="flex items-center gap-2">
-              <SiTailwindcss className="h-5 w-5 shrink-0 text-[#06B6D4]" />
-              <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
-                Tailwind
-              </span>
-            </div>
-          </div>
-
-          {/* JavaScript */}
-          <div className="absolute right-5 top-14 z-20 w-23 rotate-[-4deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
-            <div className="flex items-center gap-2">
-              <SiJavascript className="h-5 w-5 shrink-0 text-[#F7DF1E]" />
-              <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
-                JavaScript
-              </span>
-            </div>
-          </div>
-
-          {/* Node.js */}
-          <div className="absolute bottom-4 left-4 z-10 w-20.5 rotate-[-4deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
-            <div className="flex items-center gap-2">
-              <SiNodedotjs className="h-5 w-5 shrink-0 text-[#5FA04E]" />
-              <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
-                Node.js
-              </span>
-            </div>
-          </div>
-
-          {/* PHP */}
-          <div className="absolute bottom-2 right-4 z-20 w-19 rotate-[7deg] rounded-lg border border-ink-deep/10 bg-ink p-2.5 shadow-sm transition-transform duration-300 hover:z-40 hover:rotate-0 hover:-translate-y-1">
-            <div className="flex items-center gap-2">
-              <SiPhp className="h-5 w-5 shrink-0 text-[#777BB4]" />
-              <span className="font-mono text-[8px] font-bold uppercase text-ink-deep/60">
-                PHP
-              </span>
-            </div>
-          </div>
-
-        </div>
-      </div>
 
         {/* GitHub Contribution */}
         <div className="animate-[heroFadeUp_0.7s_ease-out_1s_both] rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 lg:col-span-3">
