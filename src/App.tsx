@@ -1,5 +1,5 @@
-import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
@@ -9,15 +9,17 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <>
-  <Hero/>
-  <Navbar/>
-  <About/>
-  <Projects/>
-  <Experience/>
-  <Contact/>
-  <Footer/>
+      <Navbar />
+      <main>
+        <section id="home"><Hero /></section>
+        <section id="about"><About /></section>
+        <section id="projects"><Projects /></section>
+        <section id="experience"><Experience /></section>
+        <section id="contact"><Contact /></section>
+      </main>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

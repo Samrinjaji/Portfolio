@@ -67,22 +67,22 @@ function About() {
   }
 
   return (
-    <section id="about" className="bg-ink px-6 py-16 text-ink-deep md:px-10 lg:px-16">
+    <div className="px-6 py-16 text-ink md:px-10 lg:px-16">
 
       {/* Section divider */}
       <div
-          className={`mx-auto flex w-full max-w-4xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink-deep/40 sm:text-xs ${
+          className={`mx-auto flex w-full max-w-4xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink/40 sm:text-xs ${
             isVisible
               ? "animate-[heroFadeDown_0.7s_ease-out_both]"
               : "opacity-0"
           }`}
         >
-        <span className="flex shrink-0 items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent-blue" />
+        <span className="flex shrink-0 items-center gap-2 text-sm">
+          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           About
         </span>
 
-        <div className="h-px flex-1 bg-ink-deep/10" />
+        <div className="h-1 flex-1 bg-accent/10" />
 
         <span className="hidden sm:block">
           Profile
@@ -94,7 +94,7 @@ function About() {
 
         {/* Intro */}
         <div
-            className={`rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 sm:p-7 ${
+            className={`rounded-xl border border-ink/10 bg-ink/4 p-5 sm:p-7 ${
               isVisible
                 ? "animate-[heroFadeUp_0.7s_ease-out_0.15s_both]"
                 : "opacity-0"
@@ -109,11 +109,11 @@ function About() {
 
                 {/* Content */}
                 <div className="min-w-0">
-                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent-blue">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
                     Beyond the code
                     </p>
 
-                    <h2 className="mt-2 font-extrabold text-ink-deep sm:text-3xl">
+                    <h2 className="mt-2 font-extrabold text-ink/90 sm:text-3xl">
                     Transforming Ideas Into
                     <br />
                     Digital Excellence
@@ -124,16 +124,16 @@ function About() {
                     <img
                       src={samrinDark}
                       alt="Samrin Jaji"
-                      className="h-14 w-14 rounded-full border-2 border-accent-blue object-cover"
+                      className="h-14 w-14 rounded-full border-2 border-ink object-cover"
                     />
 
-                    <div className="pointer-events-none absolute right-0 top-full z-10 mt-2 whitespace-nowrap rounded-md border border-ink-deep/10 bg-ink-deep px-3 py-1.5 text-xs font-medium text-ink shadow-sm animate-profile-greeting">
+                    <div className="pointer-events-none absolute right-0 top-full z-10 mt-2 whitespace-nowrap rounded-md border border-ink/10 bg-doom px-3 py-1.5 text-xs font-medium text-ink shadow-sm animate-profile-greeting">
                         Hey there! 👋
                     </div>
                 </div>
             </div>
 
-                <p className="mt-5 max-w-xl text-sm leading-6 text-ink-deep/60 sm:text-base">
+                  <p className="mt-5 max-w-xl text-sm leading-6 text-ink/60 sm:text-base">
                     I'm interested in understanding how applications work as a
                     whole — from the interface people interact with to the logic,
                     data, and systems behind it. Most of my learning happens by
@@ -141,7 +141,7 @@ function About() {
                     software.
                 </p>
 
-                <p className="mt-4 max-w-xl text-sm leading-6 text-ink-deep/50 sm:text-base">
+                <p className="mt-4 max-w-xl text-sm leading-6 text-ink/50 sm:text-base">
                     My focus is growing toward full stack development while
                     exploring cybersecurity alongside it. That combination has
                     made me more interested in creating applications that are
@@ -151,11 +151,7 @@ function About() {
             </div>
 
             {/* Profile */}
-            <div className="border-t border-ink-deep/10 pt-5 md:border-l md:border-t-0 md:pl-6 md:pt-0">
-
-              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink-deep/30">
-                Profile
-              </span>
+            <div className="border-t border-accent/10 pt-5 md:border-l md:border-t-0 md:pl-6 md:pt-0">
 
               <div className="mt-5 space-y-5">
 
@@ -163,7 +159,7 @@ function About() {
                   <FaMapMarkerAlt className="mt-0.5 h-5 w-5 shrink-0 " />
 
                   <div>
-                    <span className="font-mono text-[9px] uppercase tracking-widest text-ink-deep/30">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-ink/30">
                       Based in
                     </span>
 
@@ -177,7 +173,7 @@ function About() {
                   <FaGraduationCap className="mt-0.5 h-5 w-5 shrink-0 " />
 
                   <div>
-                    <span className="font-mono text-[9px] uppercase tracking-widest text-ink-deep/30">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-ink/30">
                       Education
                     </span>
 
@@ -191,7 +187,7 @@ function About() {
                   <FaShieldAlt className="mt-0.5 shrink-0 h-5 w-5" />
 
                   <div>
-                    <span className="font-mono text-[9px] uppercase tracking-widest text-ink-deep/30">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-ink/30">
                       Exploring
                     </span>
 
@@ -212,26 +208,22 @@ function About() {
 
           {/* Development */}
           <div
-              className={`group relative isolate overflow-hidden rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30 ${
+              className={`group relative isolate overflow-hidden rounded-xl border border-ink/10 bg-ink/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30 ${
                 isVisible
                   ? "animate-[heroFadeUp_0.7s_ease-out_0.35s_both]"
                   : "opacity-0"
               }`}
             >
 
-            {/* Decorative background: gradient wash + blurred circle */}
-            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-accent-blue/8 via-transparent to-transparent" />
-            <div className="pointer-events-none absolute -right-10 -top-10 -z-10 h-36 w-36 rounded-full bg-accent-blue/20 blur-xl transition-opacity duration-300 group-hover:opacity-90" />
+            {/* Decorative background*/}
+            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-br from-accent/8 via-transparent to-transparent" />
+            <div className="pointer-events-none absolute -right-10 -top-10 -z-10 h-36 w-36 rounded-full bg-accent/20 blur-xl transition-opacity duration-300 group-hover:opacity-90" />
 
             <div className="flex items-center justify-between">
               <FaCode className="h-5 w-5" />
-
-              <span className="font-mono text-[9px] text-ink-deep/25">
-                01
-              </span>
             </div>
 
-            <p className="mt-6 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-ink-deep/30">
+            <p className="mt-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink/30">
               Development
             </p>
 
@@ -239,7 +231,7 @@ function About() {
               Build useful things
             </h3>
 
-            <p className="mt-2 text-xs leading-5 text-ink-deep/50">
+            <p className="mt-2 text-xs md:text-sm leading-5 text-ink/50">
               I learn best by turning ideas into applications that solve
               practical problems.
             </p>
@@ -248,7 +240,7 @@ function About() {
 
           {/* Gallery */}
           <div
-            className={`group relative isolate overflow-hidden rounded-xl border border-ink-deep/10 bg-ink-deep/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30 ${
+            className={`group relative isolate overflow-hidden rounded-xl border border-ink/10 bg-ink/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30 ${
               isVisible
                 ? "animate-[heroFadeUp_0.7s_ease-out_0.5s_both]"
                 : "opacity-0"
@@ -256,18 +248,14 @@ function About() {
           >
 
             {/* Decorative background: gradient wash + blurred circle */}
-            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-bl from-accent-blue/8 via-transparent to-transparent" />
-            <div className="pointer-events-none absolute -left-10 -top-10 -z-10 h-32 w-32 rounded-full bg-accent-blue/20 blur-xl transition-opacity duration-300 group-hover:opacity-90" />
+            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-bl from-accent/8 via-transparent to-transparent" />
+            <div className="pointer-events-none absolute -left-10 -top-10 -z-10 h-32 w-32 rounded-full bg-accent/20 blur-xl transition-opacity duration-300 group-hover:opacity-90" />
 
             <div className="flex items-center justify-between">
                 <FaImages className="h-5 w-5 " />
-
-                <span className="font-mono text-[9px] text-ink-deep/25">
-                02
-                </span>
             </div>
 
-            <p className="mt-6 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-ink-deep/30">
+            <p className="mt-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink/30">
                 Gallery
             </p>
 
@@ -276,7 +264,7 @@ function About() {
             </h3>
 
             {/* Carousel */}
-            <div className="group/carousel relative mt-4 h-40 overflow-hidden rounded-lg border border-ink-deep/10 bg-ink">
+            <div className="group/carousel relative mt-4 h-40 overflow-hidden rounded-lg border border-ink/10 bg-ink">
 
               {galleryImages.map((image, i) => (
                 <img
@@ -317,7 +305,7 @@ function About() {
                     onClick={() => setActiveSlide(i)}
                     aria-label={`Go to photo ${i + 1}`}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
-                      i === activeSlide ? "w-4 bg-white" : "w-1.5 bg-white/50"
+                      i === activeSlide ? "w-4 bg-ink" : "w-1.5 bg-white/50"
                     }`}
                   />
                 ))}
@@ -330,19 +318,19 @@ function About() {
 
           {/* Bottom metadata */}
           <div
-            className={`mt-3 flex flex-col gap-3 rounded-xl border border-ink-deep/10 bg-ink-deep/4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between ${
+            className={`mt-3 flex flex-col gap-3 rounded-xl border border-ink/10 bg-ink/4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between ${
               isVisible
                 ? "animate-[heroFadeUp_0.7s_ease-out_0.65s_both]"
                 : "opacity-0"
             }`}
           >
 
-            <span className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-ink-deep/30">
+            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-ink/30">
               Always learning / always building
             </span>
 
-            <span className="flex items-center gap-2 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-accent-blue">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent-blue" />
+            <span className="flex items-center gap-2 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-accent">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
               Open to opportunities
             </span>
 
@@ -350,7 +338,7 @@ function About() {
 
         </div>
 
-    </section>
+    </div>
   )
 }
 
