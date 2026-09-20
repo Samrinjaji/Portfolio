@@ -75,22 +75,22 @@ function Projects() {
 
   return (
     <div
-      className="bg-ink px-6 py-16 text-ink-deep md:px-10 lg:px-16"
+      className="px-6 py-16 text-ink md:px-10 lg:px-16"
     >
       {/* Section divider */}
       <div
-        className={`mx-auto flex w-full max-w-4xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink-deep/40 sm:text-xs ${
+        className={`mx-auto flex w-full max-w-4xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink/40 sm:text-xs ${
           isVisible
             ? "animate-[heroFadeDown_0.7s_ease-out_both]"
             : "opacity-0"
         }`}
       >
-        <span className="flex shrink-0 items-center gap-2">
-          <span className="h-1.5 w-1.5 rounded-full bg-accent-blue" />
+        <span className="flex shrink-0 items-center gap-2 tetx-base">
+          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           Projects
         </span>
 
-        <div className="h-px flex-1 bg-ink-deep/10" />
+        <div className="h-1 flex-1 bg-accent/10" />
 
         <span className="hidden sm:block">
           Selected Work
@@ -105,7 +105,7 @@ function Projects() {
             : "opacity-0"
         }`}
       >
-        <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-accent-blue">
+        <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-accent">
           What I've built
         </p>
 
@@ -118,7 +118,7 @@ function Projects() {
 
       {/* Index list */}
       <div
-        className={`mx-auto mt-8 w-full max-w-4xl divide-y divide-ink-deep/10 border-y border-ink-deep/10 ${
+        className={`mx-auto mt-8 w-full max-w-4xl divide-y divide-ink-deep/10 border-y border-accent/10 ${
           isVisible
             ? "animate-[heroFadeUp_0.7s_ease-out_0.35s_both]"
             : "opacity-0"
@@ -132,7 +132,7 @@ function Projects() {
           >
 
             {/* Decorative background */}
-            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-accent-blue/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-accent/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
             {/* Project content */}
             <div className="grid grid-cols-[1fr_auto] gap-x-6 gap-y-3 pl-9">
@@ -143,18 +143,18 @@ function Projects() {
                 {/* Title row */}
                 <div className="flex items-baseline gap-4">
                   <div>
-                    <h3 className="text-xl font-extrabold uppercase leading-none tracking-tight transition-colors duration-300 group-hover:text-accent-blue sm:text-2xl">
+                    <h3 className="text-xl font-extrabold uppercase leading-none tracking-tight transition-colors duration-300 group-hover:text-accent sm:text-2xl">
                       {project.title}
                     </h3>
 
-                    <p className="mt-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink-deep/40">
+                    <p className="mt-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink/40">
                       {project.category}
                     </p>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="mt-3 max-w-xl text-xs leading-5 text-ink-deep/50 sm:text-sm">
+                <p className="mt-3 max-w-xl text-xs leading-5 text-ink/50 sm:text-sm">
                   {project.description}
                 </p>
 
@@ -163,7 +163,7 @@ function Projects() {
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-md bg-ink-deep/6 px-2 py-1 text-[10px] font-bold uppercase"
+                      className="rounded-md bg-ink/6 px-2 py-1 text-[10px] font-bold uppercase"
                     >
                       {tech}
                     </span>
@@ -171,7 +171,7 @@ function Projects() {
                 </div>
 
                 {/* Background */}
-                <p className="mt-3 max-w-xl border-l-2 border-accent-blue/30 pl-3 text-xs italic leading-5 text-ink-deep/40 sm:text-sm">
+                <p className="mt-3 max-w-xl border-l-2 border-accent/30 pl-3 text-xs italic leading-5 text-ink/40 sm:text-sm">
                   {project.background}
                 </p>
 
@@ -193,7 +193,7 @@ function Projects() {
                     )
                   }}
                   aria-label={`View ${project.title} on GitHub`}
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink-deep/10 text-ink-deep/40 transition-all duration-300 hover:border-accent-blue hover:bg-accent-blue hover:text-white"
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/10 text-ink/40 transition-all duration-300 hover:border-accent hover:bg-accent hover:text-ink"
                 >
                   <FaGithub className="h-4 w-4" />
                 </span>
@@ -201,7 +201,7 @@ function Projects() {
                 {/* Visit project */}
                 <span
                   aria-label={`Visit ${project.title}`}
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink-deep/10 text-sm text-ink-deep/40 transition-all duration-300 hover:border-accent-blue hover:bg-accent-blue hover:text-white"
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/10 text-sm text-ink/40 transition-all duration-300 hover:border-accent hover:bg-accent hover:text-ink"
                 >
                   ↗
                 </span>
@@ -211,7 +211,7 @@ function Projects() {
             </div>
 
             {/* Hover-reveal image preview, desktop only */}
-            <div className="pointer-events-none absolute right-4 top-6 z-10 hidden w-48 translate-x-4 rotate-2 overflow-visible rounded-lg border border-ink-deep/10 opacity-0 shadow-xl shadow-black/20 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 lg:block">
+            <div className="pointer-events-none absolute right-4 top-6 z-10 hidden w-48 translate-x-4 rotate-2 overflow-visible rounded-lg border border-ink/10 opacity-0 shadow-xl shadow-black/20 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 lg:block">
 
               <img
                 src={project.image}
@@ -219,7 +219,7 @@ function Projects() {
                 className="h-32 w-full rounded-lg object-cover"
               />
 
-              <span className="absolute -left-4 -top-4 origin-bottom-right scale-50 rotate-[-8deg] rounded-full bg-accent-blue px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wide text-white opacity-0 shadow-lg shadow-black/20 transition-all delay-150 duration-300 group-hover:scale-100 group-hover:opacity-100">
+              <span className="absolute -left-4 -top-4 origin-bottom-right scale-50 rotate-[-8deg] rounded-full bg-doom px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wide text-ink opacity-0 shadow-lg shadow-black/20 transition-all delay-150 duration-300 group-hover:scale-100 group-hover:opacity-100">
                 Check this out!
               </span>
 
@@ -231,18 +231,18 @@ function Projects() {
 
       {/* Bottom marker */}
       <div
-        className={`mx-auto mt-3 flex w-full max-w-4xl items-center justify-between rounded-xl border border-ink-deep/10 bg-ink-deep/4 px-5 py-4 ${
+        className={`mx-auto mt-3 flex w-full max-w-4xl items-center justify-between rounded-xl border border-ink/10 bg-ink/4 px-5 py-4 ${
           isVisible
             ? "animate-[heroFadeUp_0.7s_ease-out_0.65s_both]"
             : "opacity-0"
         }`}
       >
-        <span className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-ink-deep/30">
+        <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-ink/30">
           More projects in progress
         </span>
 
-        <span className="flex items-center gap-2 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-accent-blue">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent-blue" />
+        <span className="flex items-center gap-2 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-accent">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
           Building
         </span>
       </div>
