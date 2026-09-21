@@ -54,7 +54,6 @@ function About() {
     return () => observer.disconnect()
   }, [])
 
-  
   const centerPhoto = galleryImages[activeSlide]
   const rightPhoto = galleryImages[(activeSlide + 1) % galleryImages.length]
   const leftPhoto = galleryImages[(activeSlide + 2) % galleryImages.length]
@@ -231,28 +230,34 @@ function About() {
 
           </div>
 
-          {/* Gallery / Photo Stack */}
+          {/* Gallery / Photo Stack  */}
           <div
-            className={`group relative isolate overflow-hidden rounded-xl border border-ink/10 bg-ink/4 p-5 transition-all duration-300 ${
+            className={`group relative isolate overflow-hidden rounded-xl border border-white/10 bg-[#171012] p-5 text-white transition-all duration-300 ${
               isVisible
                 ? "animate-[heroFadeUp_0.7s_ease-out_0.5s_both]"
                 : "opacity-0"
             }`}
           >
 
-            <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_45%,rgba(232,99,62,0.18),transparent_55%)]" />
+            <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_45%,rgba(232,99,62,0.22),transparent_55%)]" />
+
+            {/* Two small "hook" */}
+            <div className="pointer-events-none absolute -top-2.5 left-1/2 z-10 flex w-24 -translate-x-1/2 justify-between">
+              <span className="h-5 w-5 rounded-t-full bg-[#171012]" />
+              <span className="h-5 w-5 rounded-t-full bg-[#171012]" />
+            </div>
 
             {/* Heading */}
             <div className="relative z-30">
               <div className="flex items-center justify-between">
-                <FaImages className="h-5 w-5" />
+                <FaImages className="h-5 w-5 text-white/80" />
               </div>
 
-              <p className="mt-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink/30">
+              <p className="mt-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                 Gallery
               </p>
 
-              <h3 className="mt-2 text-base font-bold">
+              <h3 className="mt-2 text-base font-bold text-white">
                 A glimpse behind the screen
               </h3>
             </div>
@@ -273,7 +278,7 @@ function About() {
               </div>
 
               {/* Right photo */}
-              <div className="absolute right-[3%] top-[18%] z-10 h-35 w-35 rotate-18 overflow-hidden rounded-xl border-4 border-white bg-white shadow-2xl transition-transform duration-700 group-hover:rotate-[20deg">
+              <div className="absolute right-[3%] top-[18%] z-10 h-35 w-35 rotate-18 overflow-hidden rounded-xl border-4 border-white bg-white shadow-2xl transition-transform duration-700 group-hover:rotate-20">
                 <img
                   src={rightPhoto.src}
                   alt={rightPhoto.alt}
@@ -335,7 +340,7 @@ function About() {
                   onClick={() => setActiveSlide(i)}
                   aria-label={`Go to photo ${i + 1}`}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === activeSlide ? "w-5 bg-accent" : "w-1.5 bg-ink/20"
+                    i === activeSlide ? "w-5 bg-accent" : "w-1.5 bg-white/20"
                   }`}
                 />
               ))}
