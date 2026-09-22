@@ -63,7 +63,7 @@ function Experience() {
 
       {/* Section divider */}
       <div
-        className={`mx-auto flex w-full max-w-4xl items-center gap-4 font-mono text-base font-bold uppercase tracking-wider text-ink/40 transition-all duration-700 sm:text-xs ${
+        className={`mx-auto flex w-full max-w-5xl items-center gap-4 font-mono text-base font-bold uppercase tracking-wider text-ink/40 transition-all duration-700 sm:text-xs ${
           isVisible
             ? "translate-y-0 opacity-100"
             : "translate-y-4 opacity-0"
@@ -83,7 +83,7 @@ function Experience() {
 
       {/* Intro */}
       <div
-        className={`mx-auto mt-8 w-full max-w-4xl transition-all delay-100 duration-700 ${
+        className={`mx-auto mt-8 w-full max-w-5xl transition-all delay-100 duration-700 ${
           isVisible
             ? "translate-y-0 opacity-100"
             : "translate-y-6 opacity-0"
