@@ -5,8 +5,6 @@ import {
   FaShieldAlt,
   FaCode,
   FaImages,
-  FaChevronLeft,
-  FaChevronRight,
 } from "react-icons/fa"
 
 import officeImage from "../assets/office.jpg"
@@ -16,10 +14,10 @@ import samrinDark from "../assets/samrin-dark.png"
 
 function About() {
   const galleryImages = [
-  { src: officeImage, alt: "Coding setup" },
-  { src: catImage, alt: "Development project" },
-  { src: samrinImage, alt: "Workspace" },
-]
+    { src: officeImage, alt: "Coding setup" },
+    { src: catImage, alt: "Development project" },
+    { src: samrinImage, alt: "Workspace" },
+  ]
 
   const [activeSlide, setActiveSlide] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
@@ -56,15 +54,9 @@ function About() {
     return () => observer.disconnect()
   }, [])
 
-  const goPrev = () => {
-    setActiveSlide(
-      (prev) => (prev - 1 + galleryImages.length) % galleryImages.length
-    )
-  }
-
-  const goNext = () => {
-    setActiveSlide((prev) => (prev + 1) % galleryImages.length)
-  }
+  const centerPhoto = galleryImages[activeSlide]
+  const rightPhoto = galleryImages[(activeSlide + 1) % galleryImages.length]
+  const leftPhoto = galleryImages[(activeSlide + 2) % galleryImages.length]
 
   return (
     <div className="px-6 py-16 text-ink md:px-10 lg:px-16">
@@ -238,105 +230,146 @@ function About() {
 
           </div>
 
-          {/* Gallery */}
+          {/* Gallery / Photo Stack  */}
           <div
-            className={`group relative isolate overflow-hidden rounded-xl border border-ink/10 bg-ink/4 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-blue/30 ${
+            className={`group relative isolate overflow-hidden rounded-xl border border-white/10 bg-[#171012] p-5 text-white transition-all duration-300 ${
               isVisible
                 ? "animate-[heroFadeUp_0.7s_ease-out_0.5s_both]"
                 : "opacity-0"
             }`}
           >
 
-            {/* Decorative background: gradient wash + blurred circle */}
-            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-bl from-accent/8 via-transparent to-transparent" />
-            <div className="pointer-events-none absolute -left-10 -top-10 -z-10 h-32 w-32 rounded-full bg-accent/20 blur-xl transition-opacity duration-300 group-hover:opacity-90" />
+            <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_45%,rgba(232,99,62,0.22),transparent_55%)]" />
 
-            <div className="flex items-center justify-between">
-                <FaImages className="h-5 w-5 " />
+            {/* Two small "hook" */}
+            <div className="pointer-events-none absolute -top-2.5 left-1/2 z-10 flex w-24 -translate-x-1/2 justify-between">
+              <span className="h-5 w-5 rounded-t-full bg-[#171012]" />
+              <span className="h-5 w-5 rounded-t-full bg-[#171012]" />
             </div>
 
-            <p className="mt-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-ink/30">
+            {/* Heading */}
+            <div className="relative z-30">
+              <div className="flex items-center justify-between">
+                <FaImages className="h-5 w-5 text-white/80" />
+              </div>
+
+              <p className="mt-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                 Gallery
-            </p>
+              </p>
 
-            <h3 className="mt-2 text-base font-bold">
+              <h3 className="mt-2 text-base font-bold text-white">
                 A glimpse behind the screen
-            </h3>
+              </h3>
+            </div>
 
-            {/* Carousel */}
-            <div className="group/carousel relative mt-4 h-40 overflow-hidden rounded-lg border border-ink/10 bg-ink">
+            {/* Photo composition */}
+            <div className="relative mx-auto mt-5 h-65 w-full max-w-97.5">
 
-              {galleryImages.map((image, i) => (
+              {/* Back glow*/}
+              <div className="absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-3xl" />
+
+              {/* Left photo */}
+              <div className="absolute left-[3%] top-[18%] z-10 h-35 w-35 -rotate-18 overflow-hidden rounded-xl border-4 border-white bg-white shadow-2xl transition-transform duration-700 group-hover:-rotate-20">
                 <img
+                  src={leftPhoto.src}
+                  alt={leftPhoto.alt}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              {/* Right photo */}
+              <div className="absolute right-[3%] top-[18%] z-10 h-35 w-35 rotate-18 overflow-hidden rounded-xl border-4 border-white bg-white shadow-2xl transition-transform duration-700 group-hover:rotate-20">
+                <img
+                  src={rightPhoto.src}
+                  alt={rightPhoto.alt}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              {/* Center photo */}
+              <div className="absolute left-1/2 top-[5%] z-20 h-38.75 w-38.75 -translate-x-1/2 overflow-hidden rounded-xl border-4 border-white bg-white shadow-2xl transition-transform duration-700 group-hover:-translate-x-1/2 group-hover:-translate-y-1">
+                <img
+                  src={centerPhoto.src}
+                  alt={centerPhoto.alt}
+                  className="h-full w-full object-cover"
+                />
+
+                <div className="absolute inset-0 bg-black/10" />
+              </div>
+
+              {/* Journal card */}
+              <div className="absolute bottom-0 left-1/2 z-30 w-[88%] -translate-x-1/2 overflow-hidden rounded-[22px] bg-[#242220] px-5 py-4 text-white shadow-2xl">
+
+                {/* Small top notch / visual detail */}
+                <div className="absolute -top-3 left-1/2 h-6 w-20 -translate-x-1/2 rounded-full bg-[#242220]" />
+
+                <div className="relative">
+                  <p className="text-xs font-medium tracking-wide text-white">
+                    Daily Memo
+                  </p>
+
+                  <p className="mt-1 text-[11px] text-white/50">
+                    Notes & Journaling
+                  </p>
+                </div>
+
+                <div className="mt-6 flex items-end justify-between">
+                  <div className="flex items-end gap-1">
+                    <span className="text-2xl font-semibold leading-none">
+                      09
+                    </span>
+
+                    <span className="mb-0.5 text-[10px] text-white/50">
+                      Mar
+                    </span>
+                  </div>
+
+                  <span className="text-[10px] font-medium text-white/80">
+                    11th Notes
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Carousel indicators */}
+            <div className="relative z-40 mt-4 flex justify-center gap-1.5">
+              {galleryImages.map((image, i) => (
+                <button
                   key={image.src}
-                  src={image.src}
-                  alt={image.alt}
-                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
-                    i === activeSlide ? "opacity-100" : "opacity-0"
+                  type="button"
+                  onClick={() => setActiveSlide(i)}
+                  aria-label={`Go to photo ${i + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    i === activeSlide ? "w-5 bg-accent" : "w-1.5 bg-white/20"
                   }`}
                 />
               ))}
-
-              {/* Prev / next arrows — visible on hover only */}
-              <button
-                type="button"
-                onClick={goPrev}
-                aria-label="Previous photo"
-                className="absolute left-2 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-ink-deep/50 text-ink opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover/carousel:opacity-100"
-              >
-                <FaChevronLeft className="h-3 w-3" />
-              </button>
-
-              <button
-                type="button"
-                onClick={goNext}
-                aria-label="Next photo"
-                className="absolute right-2 top-1/2 z-10 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-ink-deep/50 text-ink opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover/carousel:opacity-100"
-              >
-                <FaChevronRight className="h-3 w-3" />
-              </button>
-
-              {/* Dots */}
-              <div className="absolute bottom-2 left-1/2 z-10 flex -translate-x-1/2 gap-1.5">
-                {galleryImages.map((image, i) => (
-                  <button
-                    key={image.src}
-                    type="button"
-                    onClick={() => setActiveSlide(i)}
-                    aria-label={`Go to photo ${i + 1}`}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      i === activeSlide ? "w-4 bg-ink" : "w-1.5 bg-white/50"
-                    }`}
-                  />
-                ))}
-              </div>
-
             </div>
-            </div>
-
-            </div>
-
-          {/* Bottom metadata */}
-          <div
-            className={`mt-3 flex flex-col gap-3 rounded-xl border border-ink/10 bg-ink/4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between ${
-              isVisible
-                ? "animate-[heroFadeUp_0.7s_ease-out_0.65s_both]"
-                : "opacity-0"
-            }`}
-          >
-
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-ink/30">
-              Always learning / always building
-            </span>
-
-            <span className="flex items-center gap-2 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-accent">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-              Open to opportunities
-            </span>
-
           </div>
 
         </div>
+
+        {/* Bottom metadata */}
+        <div
+          className={`mt-3 flex flex-col gap-3 rounded-xl border border-ink/10 bg-ink/4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between ${
+            isVisible
+              ? "animate-[heroFadeUp_0.7s_ease-out_0.65s_both]"
+              : "opacity-0"
+          }`}
+        >
+
+          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-ink/30">
+            Always learning / always building
+          </span>
+
+          <span className="flex items-center gap-2 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-accent">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+            Open to opportunities
+          </span>
+
+        </div>
+
+      </div>
 
     </div>
   )
