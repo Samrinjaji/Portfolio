@@ -66,7 +66,7 @@ function Projects() {
         "Arduino gas and smoke detection with GPRS.",
       background:
         "Built it during my academic year project",
-      stack: ["Arduino","C++"],
+      stack: ["Arduino", "C++"],
       image: gasSmokeImage,
       href: "https://example.com/",
       github: "https://github.com/Samrinjaji/arduino-gas-and-smoke-detection-with-gprs",
@@ -79,7 +79,7 @@ function Projects() {
     >
       {/* Section divider */}
       <div
-        className={`mx-auto flex w-full max-w-4xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink/40 sm:text-xs ${
+        className={`mx-auto flex w-full max-w-5xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink/40 sm:text-xs ${
           isVisible
             ? "animate-[heroFadeDown_0.7s_ease-out_both]"
             : "opacity-0"
@@ -99,7 +99,7 @@ function Projects() {
 
       {/* Intro */}
       <div
-        className={`mx-auto mt-8 w-full max-w-4xl ${
+        className={`mx-auto mt-8 w-full max-w-5xl ${
           isVisible
             ? "animate-[heroFadeUp_0.7s_ease-out_0.15s_both]"
             : "opacity-0"
@@ -116,9 +116,9 @@ function Projects() {
         </h2>
       </div>
 
-      {/* Index list */}
+      {/* card grid */}
       <div
-        className={`mx-auto mt-8 w-full max-w-4xl divide-y divide-ink-deep/10 border-y border-accent/10 ${
+        className={`mx-auto mt-10 grid w-full max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ${
           isVisible
             ? "animate-[heroFadeUp_0.7s_ease-out_0.35s_both]"
             : "opacity-0"
@@ -128,59 +128,55 @@ function Projects() {
           <a
             key={project.title}
             href={project.href}
-            className="group relative isolate flex flex-col gap-3 py-6 sm:py-7"
+            className="group relative flex flex-col overflow-hidden rounded-[28px] border-[5px] border-black bg-[#1c1c1c] shadow-lg shadow-black/20 transition-transform duration-300 hover:-translate-y-1"
           >
+            {/* Hover tooltip */}
+            <span className="pointer-events-none absolute right-4 top-4 z-10 origin-top-right scale-75 rotate-6 rounded-full bg-accent px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wide text-ink opacity-0 shadow-lg shadow-black/20 transition-all duration-300 group-hover:scale-100 group-hover:rotate-0 group-hover:opacity-100">
+              Check this out!
+            </span>
 
-            {/* Decorative background */}
-            <div className="pointer-events-none absolute inset-0 -z-10 bg-linear-to-r from-accent/5 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            {/* Image */}
+            <div className="relative h-36 w-full overflow-hidden sm:h-40">
+              <img
+                src={project.image}
+                alt=""
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-black/10" />
+            </div>
 
-            {/* Project content */}
-            <div className="grid grid-cols-[1fr_auto] gap-x-6 gap-y-3 pl-9">
-              
-              {/* Main content */}
-              <div className="min-w-0">
+            {/* Folder-tab title */}
+            <div
+              className="relative -mt-5 w-[70%] rounded-t-2xl bg-[#1c1c1c] px-5 pb-2 pt-4"
+              style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }}
+            >
+              <p className="font-mono text-[9px] font-bold uppercase leading-tight tracking-wide text-accent">
+                {project.category}
+              </p>
+              <h3 className="mt-0.5 truncate text-base font-extrabold uppercase tracking-tight text-white">
+                {project.title}
+              </h3>
+            </div>
 
-                {/* Title row */}
-                <div className="flex items-baseline gap-4">
-                  <div>
-                    <h3 className="text-xl font-extrabold uppercase leading-none tracking-tight transition-colors duration-300 group-hover:text-accent sm:text-2xl">
-                      {project.title}
-                    </h3>
+            {/* Body */}
+            <div className="flex flex-1 flex-col justify-between gap-4 bg-[#1c1c1c] px-5 pb-5 pt-1">
+              <p className="text-xs leading-5 text-white/50">
+                {project.description}
+              </p>
 
-                    <p className="mt-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink/40">
-                      {project.category}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Description */}
-                <p className="mt-3 max-w-xl text-xs leading-5 text-ink/50 sm:text-sm">
-                  {project.description}
-                </p>
-
-                {/* Stack */}
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {project.stack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-md bg-ink/6 px-2 py-1 text-[10px] font-bold uppercase"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Background */}
-                <p className="mt-3 max-w-xl border-l-2 border-accent/30 pl-3 text-xs italic leading-5 text-ink/40 sm:text-sm">
-                  {project.background}
-                </p>
-
+              <div className="flex flex-wrap gap-1.5">
+                {project.stack.slice(0, 3).map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-md bg-white/8 px-2 py-1 text-[9px] font-bold uppercase text-white/70"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
 
-              {/* Actions — right side */}
-              <div className="flex items-end gap-2 pb-0">
-
-                {/* GitHub */}
+              {/* Bottom actions row */}
+              <div className="mt-1 flex items-center justify-end gap-2 border-t border-white/10 pt-3">
                 <span
                   onClick={(e) => {
                     e.preventDefault()
@@ -193,45 +189,26 @@ function Projects() {
                     )
                   }}
                   aria-label={`View ${project.title} on GitHub`}
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/10 text-ink/40 transition-all duration-300 hover:border-accent hover:bg-accent hover:text-ink"
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/50 transition-all duration-300 hover:border-accent hover:bg-accent hover:text-ink"
                 >
-                  <FaGithub className="h-4 w-4" />
+                  <FaGithub className="h-3.5 w-3.5" />
                 </span>
 
-                {/* Visit project */}
                 <span
                   aria-label={`Visit ${project.title}`}
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/10 text-sm text-ink/40 transition-all duration-300 hover:border-accent hover:bg-accent hover:text-ink"
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/15 text-sm text-white/50 transition-all duration-300 hover:border-accent hover:bg-accent hover:text-ink"
                 >
                   ↗
                 </span>
-
               </div>
-
             </div>
-
-            {/* Hover-reveal image preview, desktop only */}
-            <div className="pointer-events-none absolute right-4 top-6 z-10 hidden w-48 translate-x-4 rotate-2 overflow-visible rounded-lg border border-ink/10 opacity-0 shadow-xl shadow-black/20 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 lg:block">
-
-              <img
-                src={project.image}
-                alt=""
-                className="h-32 w-full rounded-lg object-cover"
-              />
-
-              <span className="absolute -left-4 -top-4 origin-bottom-right scale-50 rotate-[-8deg] rounded-full bg-doom px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wide text-ink opacity-0 shadow-lg shadow-black/20 transition-all delay-150 duration-300 group-hover:scale-100 group-hover:opacity-100">
-                Check this out!
-              </span>
-
-            </div>
-
           </a>
         ))}
       </div>
 
       {/* Bottom marker */}
       <div
-        className={`mx-auto mt-3 flex w-full max-w-4xl items-center justify-between rounded-xl border border-ink/10 bg-ink/4 px-5 py-4 ${
+        className={`mx-auto mt-6 flex w-full max-w-5xl items-center justify-between rounded-xl border border-ink/10 bg-ink/4 px-5 py-4 ${
           isVisible
             ? "animate-[heroFadeUp_0.7s_ease-out_0.65s_both]"
             : "opacity-0"

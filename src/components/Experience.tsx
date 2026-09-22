@@ -58,12 +58,11 @@ function Experience() {
       ref={sectionRef}
       className="relative isolate overflow-hidden px-6 py-16 text-ink md:px-10 lg:px-16"
     >
-      {/* Subtle background glow */}
       <div className="pointer-events-none absolute bottom-0 left-1/2 -z-10 h-105 w-105 -translate-x-1/2 translate-y-1/3 rounded-full bg-accent/6 blur-3xl" />
 
       {/* Section divider */}
       <div
-        className={`mx-auto flex w-full max-w-4xl items-center gap-4 font-mono text-base font-bold uppercase tracking-wider text-ink/40 transition-all duration-700 sm:text-xs ${
+        className={`mx-auto flex w-full max-w-5xl items-center gap-4 font-mono text-base font-bold uppercase tracking-wider text-ink/40 transition-all duration-700 sm:text-xs ${
           isVisible
             ? "translate-y-0 opacity-100"
             : "translate-y-4 opacity-0"
@@ -83,7 +82,7 @@ function Experience() {
 
       {/* Intro */}
       <div
-        className={`mx-auto mt-8 w-full max-w-4xl transition-all delay-100 duration-700 ${
+        className={`mx-auto mt-8 w-full max-w-5xl transition-all delay-100 duration-700 ${
           isVisible
             ? "translate-y-0 opacity-100"
             : "translate-y-6 opacity-0"

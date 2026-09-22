@@ -63,7 +63,7 @@ function About() {
 
       {/* Section divider */}
       <div
-          className={`mx-auto flex w-full max-w-4xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink/40 sm:text-xs ${
+          className={`mx-auto flex w-full max-w-5xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink/40 sm:text-xs ${
             isVisible
               ? "animate-[heroFadeDown_0.7s_ease-out_both]"
               : "opacity-0"
@@ -82,7 +82,7 @@ function About() {
       </div>
 
       {/* Main About */}
-      <div className="mx-auto mt-8 w-full max-w-4xl">
+      <div className="mx-auto mt-8 w-full max-w-5xl">
 
         {/* Intro */}
         <div

@@ -51,7 +51,7 @@ function Hero() {
       </div>
 
       {/* Hero */}
-      <div className="mx-auto grid w-full max-w-4xl grid-cols-1 items-center  md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)]">
+      <div className="mx-auto grid w-full max-w-5xl grid-cols-1 items-center  md:grid-cols-[220px_minmax(0,1fr)] lg:grid-cols-[240px_minmax(0,1fr)]">
  
         {/* Profile */}
         <div className="flex animate-[heroScale_0.7s_ease-out_0.15s_both] flex-col items-center gap-3 md:items-start">
@@ -94,7 +94,7 @@ function Hero() {
 
       </div>
 
-      <div className="mx-auto mt-5 flex w-full max-w-4xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink/40 sm:text-xs">
+      <div className="mx-auto mt-5 flex w-full max-w-5xl items-center gap-4 font-mono text-[10px] font-bold uppercase tracking-wider text-ink/40 sm:text-xs">
         <span className="flex shrink-0 items-center gap-2">
           <kbd className="rounded border border-ink-deep/10 bg-ink/10 px-2 py-1"> ↓ </kbd>
           Scroll to explore
@@ -104,7 +104,7 @@ function Hero() {
       </div>
 
       {/* Bento grid */}
-      <div className="mx-auto mt-5 grid w-full max-w-4xl grid-cols-1 gap-3 lg:grid-cols-4">
+      <div className="mx-auto mt-5 grid w-full max-w-5xl grid-cols-1 gap-3 lg:grid-cols-4">
 
         {/* Featured Project */}
         <div className="animate-[heroFadeUp_0.7s_ease-out_0.55s_both] rounded-xl border border-ink/10 bg-ink/4 p-4 lg:col-span-3">
