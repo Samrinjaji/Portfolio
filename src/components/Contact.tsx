@@ -4,7 +4,6 @@ import type { IconType } from "react-icons"
 import {
   FaUser,
   FaEnvelope,
-  FaArrowRight,
   FaPaperPlane,
   FaLinkedin,
   FaDiscord,
@@ -14,9 +13,6 @@ import {
   FaExclamation,
 } from "react-icons/fa"
 
-/* -------------------------------------------------------------------------- */
-/*  Config                                                                    */
-/* -------------------------------------------------------------------------- */
 
 const EMAILJS = {
   serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID as string,
@@ -31,9 +27,8 @@ const SOCIALS: { label: string; href: string; icon: IconType }[] = [
     href: "https://www.linkedin.com/in/samrinjaji/",
     icon: FaLinkedin,
   },
-  // Add your real Discord profile/invite URL. Empty links are filtered out,
-  // so nothing dead is rendered until you do.
-  { label: "Discord", href: "", icon: FaDiscord },
+
+  { label: "Discord", href: "https://discord.com/channels/@me", icon: FaDiscord },
 ].filter((s) => s.href)
 
 const DIALOG_CONTENT = {
@@ -44,10 +39,10 @@ const DIALOG_CONTENT = {
     body: "Your message has been sent. I'll get back to you as soon as possible.",
     action: "Done",
     tag: "// message.delivered",
-    iconWrap: "bg-accent-blue/10 text-accent-blue",
-    eyebrowText: "text-accent-blue",
+    iconWrap: "bg-accent-blue/10 text-accent",
+    eyebrowText: "text-doom",
     button:
-      "bg-accent-blue hover:shadow-accent-blue/20 focus-visible:ring-accent-blue",
+      "bg-accent hover:shadow-accent/20 focus-visible:ring-accent",
   },
   error: {
     icon: FaExclamation,
@@ -69,8 +64,7 @@ const prefersReducedMotion = () =>
   typeof window !== "undefined" &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
-/** Flips to true once the element scrolls into view. Move to hooks/useInView.ts
- *  and reuse it in About, Projects, Experience, etc. */
+
 function useInView<T extends Element>(threshold = 0.15) {
   const ref = useRef<T | null>(null)
   const [inView, setInView] = useState(prefersReducedMotion)
@@ -96,7 +90,6 @@ function useInView<T extends Element>(threshold = 0.15) {
   return [ref, inView] as const
 }
 
-/** Shared reveal transition. `hidden` is the pre-reveal offset class. */
 const reveal = (visible: boolean, hidden: string, duration = "duration-700") =>
   `transition-all ${duration} motion-reduce:transition-none ${
     visible ? "translate-x-0 translate-y-0 opacity-100" : `${hidden} opacity-0`
@@ -104,17 +97,6 @@ const reveal = (visible: boolean, hidden: string, duration = "duration-700") =>
 
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
-
-
-function TrafficLights() {
-  return (
-    <div className="flex items-center gap-1.5" aria-hidden="true">
-      <span className="h-2 w-2 rounded-full bg-[#FF5F56]" />
-      <span className="h-2 w-2 rounded-full bg-[#FFBD2E]" />
-      <span className="h-2 w-2 rounded-full bg-[#27C93F]" />
-    </div>
-  )
-}
 
 type FieldProps = {
   id: string
@@ -137,29 +119,29 @@ function Field({
   multiline = false,
   maxLength,
 }: FieldProps) {
-  // text-base on mobile prevents iOS Safari from zooming in on focus
+  
   const control =
-    "w-full bg-transparent text-base outline-none placeholder:text-ink/40 sm:text-sm"
+  "w-full bg-transparent text-base text-ink outline-none placeholder:text-ink/40 sm:text-sm"
 
   return (
     <div>
       <label
         htmlFor={id}
-        className="mb-1.5 block font-mono text-base font-bold uppercase tracking-[0.12em] text-ink/60"
+        className="mb-1.5 block font-mono text-xs font-bold uppercase tracking-widest text-ink/60"
       >
         {label}
       </label>
 
       <div
-        className={`group flex gap-2 border-b border-ink/15 py-2 transition-colors focus-within:border-accent ${
+        className={`flex gap-2.5 rounded-xl border border-ink/10 bg-ink/2.5 px-3.5 py-3 transition-colors focus-within:border-accent ${
           multiline ? "items-start" : "items-center"
         }`}
       >
         {Icon && (
           <Icon
             aria-hidden="true"
-            className={`h-2.5 w-2.5 shrink-0 text-ink/30 group-focus-within:text-accent ${
-              multiline ? "mt-1.5" : ""
+            className={`h-3.5 w-3.5 shrink-0 text-ink/35 ${
+              multiline ? "mt-1" : ""
             }`}
           />
         )}
@@ -191,8 +173,6 @@ function Field({
   )
 }
 
-/** Uses the native <dialog>: focus trap, Escape to close, inert background
- *  and focus restore all come for free. */
 function StatusDialog({
   status,
   onClose,
@@ -205,6 +185,7 @@ function StatusDialog({
   useEffect(() => {
     const dialog = ref.current
     if (!dialog) return
+
     if (status && !dialog.open) dialog.showModal()
     if (!status && dialog.open) dialog.close()
   }, [status])
@@ -217,71 +198,66 @@ function StatusDialog({
       ref={ref}
       onClose={onClose}
       onClick={(e) => {
-        // Clicks on the backdrop hit the <dialog> itself (it has no padding)
         if (e.target === e.currentTarget) onClose()
       }}
       aria-labelledby="contact-dialog-title"
       aria-describedby="contact-dialog-desc"
-      className="m-auto w-[calc(100%-2.5rem)] max-w-sm bg-transparent p-0 backdrop:bg-black/30 backdrop:backdrop-blur-sm"
+      className="m-auto w-[calc(100%-2rem)] max-w-xs bg-transparent p-0 backdrop:bg-black/30 backdrop:backdrop-blur-sm"
     >
       {content && Icon && (
-        <div className="overflow-hidden rounded-xl border border-ink/10  p-5 text-ink-deep shadow-2xl">
-          <div className="mb-5 flex items-center justify-between border-b border-ink-deep/10 pb-3">
-            <TrafficLights />
+          <div className="relative rounded-2xl border border-ink/10 bg-ink-deep p-4 text-ink shadow-2xl">
+          {/* Close */}
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close dialog"
+            className={`absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full text-ink/40 transition-colors hover:bg-ink/5 hover:text-ink ${focusRing}`}
+          >
+            <FaTimes className="h-3 w-3" aria-hidden="true" />
+          </button>
 
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label="Close dialog"
-              className={`flex h-7 w-7 items-center justify-center rounded-md text-ink-deep/50 transition-colors hover:bg-ink/5 hover:text-ink ${focusRing}`}
-            >
-              <FaTimes className="h-3 w-3" aria-hidden="true" />
-            </button>
-          </div>
-
-          <div className="flex flex-col items-center text-center">
+          {/* Content */}
+          <div className="flex items-start gap-3 pr-6">
+            {/* Status Icon */}
             <div
-              className={`flex h-12 w-12 items-center justify-center rounded-full ${content.iconWrap}`}
+              className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${content.iconWrap}`}
             >
-              <Icon className="h-5 w-5" aria-hidden="true" />
+              <Icon className="h-4 w-4" aria-hidden="true" />
             </div>
 
-            <span
-              className={`mt-4 font-mono text-[10px] font-bold uppercase tracking-[0.18em] ${content.eyebrowText}`}
-            >
-              {content.eyebrow}
-            </span>
+            {/* Text */}
+            <div className="min-w-0">
+              <span
+                className={`font-mono text-[10px] font-bold uppercase tracking-[0.15em] ${content.eyebrowText}`}
+              >
+                {content.eyebrow}
+              </span>
 
-            <h3
-              id="contact-dialog-title"
-              className="mt-2 text-lg font-extrabold tracking-tight"
-            >
-              {content.title}
-            </h3>
+              <h3
+                id="contact-dialog-title"
+                className="mt-1 text-sm font-bold tracking-tight"
+              >
+                {content.title}
+              </h3>
 
-            <p
-              id="contact-dialog-desc"
-              className="mt-2 max-w-xs text-sm leading-5 text-ink/60"
-            >
-              {content.body}
-            </p>
-
-            <button
-              type="button"
-              autoFocus
-              onClick={onClose}
-              className={`mt-5 w-full rounded-md px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-ink transition-all hover:-translate-y-0.5 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${focusRing} ${content.button}`}
-            >
-              {content.action}
-            </button>
-
-            <span
-              aria-hidden="true"
-              className="mt-3 font-mono text-[10px] uppercase tracking-[0.15em] text-ink/35"
-            >
-              {content.tag}
-            </span>
+              <p
+                id="contact-dialog-desc"
+                className="mt-1 text-xs leading-5 text-ink/55"
+              >
+                {content.body}
+              </p>
+            </div>
           </div>
+
+          {/* Action */}
+          <button
+            type="button"
+            autoFocus
+            onClick={onClose}
+            className={`mt-4 w-full rounded-lg px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-ink transition-all hover:-translate-y-0.5 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${focusRing} ${content.button}`}
+          >
+            {content.action}
+          </button>
         </div>
       )}
     </dialog>
@@ -289,16 +265,17 @@ function StatusDialog({
 }
 
 
-export default function Contact() {
-  const [sectionRef, isVisible] = useInView<HTMLElement>()
+
+export default 
+
+function Contact() {
+  const [sectionRef, isVisible] = useInView<HTMLDivElement>()
   const [status, setStatus] = useState<Status>("idle")
 
   const isSending = status === "sending"
   const dialogStatus: DialogStatus | null =
     status === "success" || status === "error" ? status : null
 
-  // Auto-close the success dialog. The cleanup cancels the timer if the user
-  // closes it early or submits again, so it can't close a later dialog.
   useEffect(() => {
     if (status !== "success") return
     const id = window.setTimeout(() => setStatus("idle"), 4000)
@@ -309,11 +286,8 @@ export default function Contact() {
     e.preventDefault()
     if (isSending) return
 
-    // Capture now: e.currentTarget is null after the first await
     const form = e.currentTarget
 
-    // Honeypot: real users never see this field, bots fill it in.
-    // Pretend it worked so bots get no signal.
     if (new FormData(form).get("website")) {
       form.reset()
       setStatus("success")
@@ -336,13 +310,12 @@ export default function Contact() {
 
   return (
     <>
-      <section
+      <div
         ref={sectionRef}
         id="contact"
         aria-labelledby="contact-heading"
-        className="relative overflow-hidden  px-5 py-16 text-ink sm:px-8 lg:px-12"
+        className="relative overflow-hidden px-5 py-16 text-ink sm:px-8 lg:px-12"
       >
-        {/* Ambient background */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-32 -top-32 h-72 w-72 rounded-full bg-accent/5 blur-3xl"
@@ -352,212 +325,148 @@ export default function Contact() {
           className="pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-accent/4 blur-3xl"
         />
 
-        {/* Section header */}
+        
+
+        {/* Section divider */}
         <div
-          className={`relative mx-auto flex w-full max-w-4xl items-center gap-3 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink/50 ${reveal(
+          className={`mx-auto flex w-full max-w-5xl items-center gap-4 font-mono text-base font-bold uppercase tracking-wider text-ink/40 transition-all duration-700 sm:text-xs ${
+            isVisible
+              ? "translate-y-0 opacity-100"
+              : "translate-y-4 opacity-0"
+          }`}
+        >
+          <span className="flex shrink-0 items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            Contact
+          </span>
+
+          <div className="h-1 flex-1 bg-accent/10" />
+        </div>
+
+        {/* Heading */}
+        <div
+          className={`relative mx-auto mt-8 max-w-lg text-center ${reveal(
             isVisible,
             "translate-y-4"
           )}`}
         >
-          <span className="flex shrink-0 items-center gap-2">
-            <span
-              aria-hidden="true"
-              className="h-1.5 w-1.5 rounded-full bg-accent"
-            />
-            Contact
-          </span>
+          <h2
+            id="contact-heading"
+            className="text-2xl font-extrabold tracking-tight sm:text-3xl"
+          >
+            Get In Touch
+          </h2>
 
-          <div aria-hidden="true" className="h-px flex-1 bg-ink/10" />
-
-          <span className="hidden sm:block">Get in touch</span>
+          <p className="mt-3 text-sm leading-6 text-ink/60">
+            Have a project in mind or just want to say hello? Feel free to
+            reach out.
+          </p>
         </div>
 
-        {/* Contact card */}
+
+        {/* Compact form card */}
         <div
-          className={`relative mx-auto mt-7 w-full max-w-4xl delay-100 ${reveal(
+          className={`relative mx-auto mt-8 w-full max-w-lg delay-100 ${reveal(
             isVisible,
             "translate-y-6"
           )}`}
         >
-          <div className="grid overflow-hidden rounded-xl border border-ink/10 bg-ink/2.5 lg:grid-cols-[0.75fr_1.25fr]">
-            {/* Left panel */}
-            <div
-              className={`border-b border-ink/10 p-6 sm:p-7 lg:border-b-0 lg:border-r ${reveal(
-                isVisible,
-                "-translate-x-8"
-              )}`}
-              style={{ transitionDelay: "250ms" }}
+          <div className="rounded-3xl border border-ink/10 bg-ink/2.5 p-6 sm:p-7">
+            <form
+              onSubmit={handleSubmit}
+              aria-busy={isSending}
+              className="space-y-5"
             >
-              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-accent">
-                Let&apos;s talk
-              </span>
-
-              <h2
-                id="contact-heading"
-                className="mt-2.5 max-w-xs text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl"
-              >
-                Have a project in mind?
-              </h2>
-
-              <p className="mt-3 max-w-sm text-sm leading-6 text-ink/60">
-                Tell me what you&apos;re working on and let&apos;s see how I can
-                help bring it to life.
-              </p>
-
-              {/* Availability */}
-              <div className="mt-6 flex items-start gap-2.5">
-                <span
-                  aria-hidden="true"
-                  className="relative mt-1 flex h-2 w-2 shrink-0"
-                >
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-blue opacity-50 motion-reduce:animate-none" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-blue" />
-                </span>
-
-                <div>
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-accent">
-                    Available for work
-                  </p>
-
-                  <p className="mt-1 text-xs leading-5 text-ink/60">
-                    Freelance projects, collaborations, and development
-                    opportunities.
-                  </p>
-                </div>
-              </div>
-
-              {/* Social links */}
-              <div className="mt-7 border-t border-ink/10 pt-5">
-                <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink/50">
-                  Find me online
-                </p>
-
-                <ul className="flex items-center gap-2">
-                  {SOCIALS.map(({ label, href, icon: Icon }, i) => (
-                    <li key={label}>
-                      <a
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`${label} (opens in a new tab)`}
-                        className={`flex h-9 w-9 items-center justify-center rounded-md border border-ink/10 text-ink/55 hover:-translate-y-1 hover:border-accent/30 hover:text-accent motion-reduce:hover:translate-y-0 ${focusRing} ${reveal(
-                          isVisible,
-                          "translate-y-3",
-                          "duration-500"
-                        )}`}
-                        style={{ transitionDelay: `${650 + i * 100}ms` }}
-                      >
-                        <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Right panel */}
-            <div
-              className={`p-5 sm:p-7 ${reveal(isVisible, "translate-x-8")}`}
-              style={{ transitionDelay: "350ms" }}
-            >
-              <div className="mb-5 flex items-center justify-between border-b border-ink/10 pb-3">
-                <TrafficLights />
-
-                <span
-                  aria-hidden="true"
-                  className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-ink/40"
-                >
-                  contact.tsx
-                </span>
-              </div>
-
-              <form
-                onSubmit={handleSubmit}
-                aria-busy={isSending}
-                className="space-y-5"
-              >
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <Field
-                    id="name"
-                    label="Name"
-                    placeholder="Your name"
-                    autoComplete="name"
-                    icon={FaUser}
-                    maxLength={100}
-                  />
-                  <Field
-                    id="email"
-                    label="Email"
-                    type="email"
-                    placeholder="you@example.com"
-                    autoComplete="email"
-                    icon={FaEnvelope}
-                    maxLength={254}
-                  />
-                </div>
-
+              <div className="grid gap-4 sm:grid-cols-2">
                 <Field
-                  id="subject"
-                  label="Subject"
-                  placeholder="What can I help you with?"
-                  maxLength={150}
+                  id="name"
+                  label="Name"
+                  placeholder="Your name"
+                  autoComplete="name"
+                  icon={FaUser}
+                  maxLength={100}
                 />
-
                 <Field
-                  id="message"
-                  label="Message"
-                  placeholder="Tell me about your project..."
-                  multiline
-                  maxLength={2000}
+                  id="email"
+                  label="Email"
+                  type="email"
+                  placeholder="Your email"
+                  autoComplete="email"
+                  icon={FaEnvelope}
+                  maxLength={254}
                 />
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={isSending}
-                  className={`group flex w-full items-center justify-between rounded-md bg-accent px-4 py-3 text-xs font-bold uppercase tracking-wide text-ink transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-accent/20 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${focusRing}`}
-                >
-                  <span className="flex items-center gap-2">
-                    <FaPaperPlane className="h-2.5 w-2.5" aria-hidden="true" />
-                    {isSending ? "Sending..." : "Send message"}
-                  </span>
+              <Field
+                id="subject"
+                label="Subject"
+                placeholder="Subject of your message"
+                maxLength={150}
+              />
 
-                  <FaArrowRight
-                    className="h-2.5 w-2.5 transition-transform duration-300 group-hover:translate-x-1 group-disabled:translate-x-0 motion-reduce:transition-none"
-                    aria-hidden="true"
-                  />
-                </button>
+              <Field
+                id="message"
+                label="Message"
+                placeholder="Your message"
+                multiline
+                maxLength={2000}
+              />
 
-                {/* Honeypot (hidden from people and screen readers) */}
-                <div
-                  aria-hidden="true"
-                  className="absolute left-[-9999px] h-0 w-0 overflow-hidden"
-                >
-                  <label htmlFor="website">Leave this field empty</label>
-                  <input
-                    id="website"
-                    name="website"
-                    type="text"
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
-                </div>
-              </form>
-            </div>
+              <button
+                type="submit"
+                disabled={isSending}
+                className={`flex w-full items-center justify-center gap-2 rounded-full bg-accent px-4 py-3 text-xs font-bold uppercase tracking-wide text-ink transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md hover:shadow-accent/20 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-none motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${focusRing}`}
+              >
+                <FaPaperPlane className="h-2.5 w-2.5" aria-hidden="true" />
+                {isSending ? "Sending..." : "Send Message"}
+              </button>
+
+              {/* Honeypot (hidden from people and screen readers) */}
+              <div
+                aria-hidden="true"
+                className="absolute left-[-9999px] h-0 w-0 overflow-hidden"
+              >
+                <label htmlFor="website">Leave this field empty</label>
+                <input
+                  id="website"
+                  name="website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+            </form>
           </div>
 
-          {/* Footer note */}
-          <div className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.12em] text-ink/50">
-            <span>I&apos;ll get back to you as soon as possible.</span>
+          {/* Social links */}
+          <div className="mt-6 flex flex-col items-center gap-3">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] text-ink/50">
+              Find me online
+            </p>
 
-            <span
-              aria-hidden="true"
-              className="hidden text-accent/60 sm:block"
-            >
-              // connection.ready
-            </span>
+            <ul className="flex items-center gap-2">
+              {SOCIALS.map(({ label, href, icon: Icon }, i) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${label} (opens in a new tab)`}
+                    className={`flex h-9 w-9 items-center justify-center rounded-md border border-ink/10 text-ink/55 hover:-translate-y-1 hover:border-accent/30 hover:text-accent motion-reduce:hover:translate-y-0 ${focusRing} ${reveal(
+                      isVisible,
+                      "translate-y-3",
+                      "duration-500"
+                    )}`}
+                    style={{ transitionDelay: `${450 + i * 100}ms` }}
+                  >
+                    <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-      </section>
+      </div>
 
       <StatusDialog status={dialogStatus} onClose={() => setStatus("idle")} />
     </>

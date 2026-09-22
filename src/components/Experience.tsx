@@ -58,7 +58,6 @@ function Experience() {
       ref={sectionRef}
       className="relative isolate overflow-hidden px-6 py-16 text-ink md:px-10 lg:px-16"
     >
-      {/* Subtle background glow */}
       <div className="pointer-events-none absolute bottom-0 left-1/2 -z-10 h-105 w-105 -translate-x-1/2 translate-y-1/3 rounded-full bg-accent/6 blur-3xl" />
 
       {/* Section divider */}
